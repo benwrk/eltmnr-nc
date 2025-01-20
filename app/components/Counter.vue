@@ -1,12 +1,14 @@
 <template>
   <div>
     <h3>Counter: {{ count }}</h3>
-    <button @click="increment">Increment</button>
-    <button @click="decrement">Decrement</button>
+    <Button @click="increment">Increment</Button>
+    <Button @click="decrement">Decrement</Button>
   </div>
 </template>
 
 <script setup lang="ts">
+import { Button } from 'primevue'
+
 const count = ref(0)
 
 const increment = () => {
