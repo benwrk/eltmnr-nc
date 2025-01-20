@@ -1,0 +1,1 @@
+import{l as n,a as r,k as s,f as o,i as c,V as _,F as l,A as f}from"./BBavqV_q.js";const m={};function p(t,e){return null}const u=Object.assign(n(m,[["render",p]]),{__name:"Navbar"}),i=r({__name:"Base",setup(t){return(e,a)=>(s(),o(l,null,[c(u),_(e.$slots,"default",{},()=>[a[0]||(a[0]=f("Empty Slot"))])],64))}});export{i as default};
