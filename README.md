@@ -1,6 +1,8 @@
-# Nuxt Content Starter
+# Elite Manor Website
 
-Look at the [Nuxt Content documentation](https://content.nuxt.com) to learn more.
+## CMS
+
+Use [Nuxt Studio](https://nuxt.studio/benwrk/eltmnr-nc) to edit content.
 
 ## Setup
 
