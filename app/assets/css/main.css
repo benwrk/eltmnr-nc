@@ -23,5 +23,10 @@
     h6 {
       font-family: 'Red Hat Display';
     }
+
+    /* @apply relative;
+    body {
+      @apply relative;
+    } */
   }
 }

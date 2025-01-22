@@ -1,4 +1,4 @@
-const primary = {
+const copper = {
   50: '#f8f2ef',
   100: '#e9d7d0',
   200: '#dabcb0',
@@ -12,22 +12,6 @@ const primary = {
   950: '#100a07'
 }
 
-const surface = {
-  0: '#ffffff',
-  50: '#f9f9f8',
-  100: '#e3e1e0',
-  200: '#cccac7',
-  300: '#b6b2ae',
-  400: '#9f9b95',
-  500: '#89837c',
-  600: '#746f69',
-  700: '#605c57',
-  800: '#4b4844',
-  900: '#373432',
-  950: '#22211f'
-}
-
 export const colors = {
-  primary,
-  surface
+  copper
 }

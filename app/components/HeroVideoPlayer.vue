@@ -23,7 +23,6 @@ const videoStarted = ref<boolean>(false)
 const { width, height } = useElementSize(videoRoot)
 
 function videoStateChange(event: YT.OnStateChangeEvent) {
-  console.log(event)
   // Loops video.
   if (event.data === YT.PlayerState.ENDED) {
     video.value?.player?.playVideo()
@@ -37,10 +36,8 @@ function videoStateChange(event: YT.OnStateChangeEvent) {
 </script>
 
 <template>
-  <div
-    ref="videoRoot"
-    class="relative w-full h-screen max-h-[100vw] overflow-hidden flex items-center justify-center"
-  >
+  <!-- class="relative w-full h-screen max-h-[100vw] overflow-hidden flex items-center justify-center" -->
+  <div ref="videoRoot" class="relative overflow-hidden flex items-center justify-center">
     <div
       :style="{
         width: `${Math.max(width, (height / 9) * 16)}px`,
