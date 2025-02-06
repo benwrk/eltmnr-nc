@@ -1,5 +1,10 @@
 <script setup lang="ts">
 import { Navbar } from '#components'
+import { animate, inView, stagger } from 'motion'
+import HeroImage from '/home/hero.jpg'
+import Award1 from '/home/award-1.svg'
+import Award2 from '/home/award-2.svg'
+import { Image } from 'primevue'
 const route = useRoute()
 
 const { data: page } = await useAsyncData(route.path, () => {
@@ -90,6 +95,17 @@ watch(windowScroll.isScrolling, function stickyScroll() {
 
   scrollTo(scrollToOptions)
 })
+
+onMounted(() => {
+  const elements = [...document.getElementsByClassName('fade-in')]
+
+  elements.forEach((element) => {
+    ;(element as HTMLElement).style.opacity = '0'
+    inView(element, () => {
+      animate(element, { opacity: [0, 1, 1, 1] }, { delay: stagger(1, { startDelay: 0.2 }) })
+    })
+  })
+})
 </script>
 
 <template>
@@ -99,6 +115,7 @@ watch(windowScroll.isScrolling, function stickyScroll() {
       <!-- {{ navbar?.height }} -->
       <div ref="translateHeroOriginDiv" class="relative w-full h-screen">
         <HeroVideoPlayer
+          class="shadow-2xl"
           :class="{ 'rounded-lg': translateHeroStage === 1 }"
           :style="{
             transform: `translate(${translateHeroValues.translate.x}px, ${translateHeroValues.translate.y}px)`,
@@ -113,81 +130,155 @@ watch(windowScroll.isScrolling, function stickyScroll() {
           :style="{
             paddingTop: `${navbar?.height}px`
           }"
+          class="flex flex-col gap-y-24 my-32"
         >
-          <div class="container mx-auto flex">
-            <div
-              ref="translateHeroTargetDiv"
-              class="w-3/4 aspect-[18.5/9] ms-auto max-w-full"
-            ></div>
+          <div class="flex container mx-auto items-center">
+            <div class="w-1/2 pr-12">
+              <header class="text-right fade-in">
+                <slot name="header">
+                  <h1 class="text-9xl">
+                    Elite<br />
+                    Manor
+                  </h1>
+                </slot>
+              </header>
+            </div>
+            <div ref="translateHeroTargetDiv" class="w-1/2 max-h-80 aspect-video ms-auto"></div>
+          </div>
+          <div class="flex items-center">
+            <Image
+              :src="HeroImage"
+              alt="Hero Image"
+              class="w-3/5 max-h-80 rounded-lg rounded-l-none fade-in shadow-2xl"
+            />
+            <div class="w-2/5 pl-12">
+              <header class="text-left">
+                <slot name="subheader">
+                  <h1 class="text-5xl text-muted-color-emphasis font-normal fade-in">
+                    Innovate Living
+                  </h1>
+                  <h1 class="text-5xl text-muted-color font-normal fade-in">Classic Luxury</h1>
+                </slot>
+              </header>
+            </div>
+          </div>
+          <div class="flex flex-col items-center container mx-auto max-w-[48rem] text-center">
+            <h1 class="text-primary text-2xl">
+              To redefine innovative living through luxury, comfort, and pristine quality residences
+            </h1>
+            <p class="mt-6">
+              Elite Manor is a real estate development firm that tailors to a global array of
+              clients who seek the highest luxury in upscale homes.
+            </p>
+            <p class="mt-6">
+              Headquartered in Phuket, Thailand, we pride ourselves in constructing high quality
+              builds and modern smart-home designs to families, investors, and homeowners from all
+              walks of life.
+            </p>
+            <Button
+              label="Register Now"
+              icon="pi pi-arrow-right"
+              iconPos="right"
+              class="mt-16"
+            ></Button>
+            <p class="mt-4">
+              Register now to receive the latest special privileges & exclusive project information
+            </p>
           </div>
         </section>
-        <section>
-          <header class="text-primary text-6xl md:text-9xl">
-            <slot name="header"> <h1>Elite Manor</h1> </slot>
-          </header>
-        </section>
-        <section>
-          <header class="text-secondary text-6xl md:text-9xl">
-            <slot name="subheader">
-              <h1>Innovate</h1>
-              <h2>Living</h2>
-            </slot>
-            <slot name="subheader">
-              <h1>Classic</h1>
-              <h2>Luxury</h2>
-            </slot>
-          </header>
-        </section>
       </div>
-      <main class="flex flex-col w-full">
-        <section>
-          <p>
-            Sequi minima impedit sapiente, exercitationem voluptate distinctio doloribus culpa
-            voluptates odio! Id ipsa eum ex quibusdam dolorum temporibus, dicta at aperiam, ad
-            repellendus illo neque. Quam cumque ea voluptatibus eligendi labore! Accusamus totam ad
-            cum nesciunt sequi autem minima quos fugit sapiente quasi quae voluptatum soluta, sed
-            odio aspernatur ut dolor, sint vero tenetur! Nihil quibusdam possimus autem cumque
-            repellat.
-          </p>
+      <main>
+        <section class="flex flex-col w-full bg-highlight fade-in">
+          <div class="flex items-center container mx-auto py-16 gap-x-32">
+            <div class="flex gap-x-16 shrink-0">
+              <Image
+                :src="Award1"
+                alt="Award 1"
+                class="h-96 bg-primary-300 p-1 rounded-lg shadow-2xl"
+                preview
+              />
+              <Image
+                :src="Award2"
+                alt="Award 2"
+                class="h-96 bg-primary-300 p-1 rounded-lg shadow-2xl"
+                preview
+              />
+            </div>
+            <div class="shrink flex flex-col gap-y-8">
+              <p>
+                We tailor to international clients who seek luxury and high-end housing in Thailand.
+                Headquartered in Phuket, Thailand and focused on a target market of families,
+                foreigners, and investors. We pride ourselves in our high quality builds and modern
+                smart-home designs.
+              </p>
+              <Button
+                label="Learn More"
+                icon="pi pi-arrow-right"
+                iconPos="right"
+                class="self-end"
+              ></Button>
+            </div>
+          </div>
         </section>
-        <section>
-          Consectetur tenetur laboriosam fugit fuga quis aut, dolores illo repellendus, culpa
-          delectus sequi velit nobis tempora beatae eligendi officiis quia neque, laudantium laborum
-          consequuntur atque iure provident saepe? Perspiciatis alias voluptates nihil, minima atque
-          harum aspernatur nam vel est cum nemo dolorum repellat. Labore, quidem nemo assumenda, ad
-          quisquam dolore dolorem quod expedita quia nostrum modi numquam id, recusandae atque!
+        <section class="flex flex-col w-full">
+          <div class="flex items-center container mx-auto py-16 gap-x-32">
+            <div class="flex gap-x-16 shrink-0">
+              <!-- <Image :src="Award1" class="h-96 object-cover bg-primary-300 p-1 rounded-lg" />
+              <Image :src="Award2" class="h-96 object-cover bg-primary-300 p-1 rounded-lg" /> -->
+            </div>
+            <div class="shrink flex flex-col gap-y-8">
+              <p>
+                We tailor to international clients who seek luxury and high-end housing in Thailand.
+                Headquartered in Phuket, Thailand and focused on a target market of families,
+                foreigners, and investors. We pride ourselves in our high quality builds and modern
+                smart-home designs.
+              </p>
+              <Button
+                label="Learn More"
+                icon="pi pi-arrow-right"
+                iconPos="right"
+                class="self-end"
+              ></Button>
+            </div>
+          </div>
         </section>
-        <section>
-          Impedit cupiditate voluptas possimus repudiandae qui! Illo asperiores in facilis libero
-          corporis doloribus tempora veniam rem laboriosam magni minima voluptate, minus voluptas.
-          Eos, officia eligendi. Dolorum aliquam sed modi alias sapiente nesciunt, molestiae, quae,
-          id minus repellat tempora aliquid! Nostrum exercitationem perferendis aperiam officiis
-          laudantium deserunt? Eveniet quos officia, in explicabo fugit, nisi sit placeat veniam,
-          nobis assumenda quia facilis?
+        <section class="flex flex-col w-full">
+          <div class="flex flex-col items-center container mx-auto py-16 gap-x-32">
+            <h1 class="text-4xl">Our Projects</h1>
+            <div class="shrink flex flex-col gap-y-8">
+              <p>
+                We tailor to international clients who seek luxury and high-end housing in Thailand.
+                Headquartered in Phuket, Thailand and focused on a target market of families,
+                foreigners, and investors. We pride ourselves in our high quality builds and modern
+                smart-home designs.
+              </p>
+              <Button
+                label="Learn More"
+                icon="pi pi-arrow-right"
+                iconPos="right"
+                class="self-end"
+              ></Button>
+            </div>
+          </div>
         </section>
-        <section>
-          Cupiditate reiciendis quisquam harum odit maxime ad hic fugiat delectus animi ut expedita,
-          et minus fuga amet architecto commodi exercitationem accusantium corporis, dolorem
-          eligendi repellendus officia! Soluta, voluptates adipisci cupiditate voluptas, nesciunt
-          animi, molestiae quia eos ut nihil sit eum atque. Rerum dignissimos culpa nostrum aliquam
-          nemo voluptatibus sunt neque placeat! Beatae, eum. Exercitationem nulla possimus
-          consequuntur facilis commodi molestias?
-        </section>
-        <section>
-          Cupiditate reiciendis quisquam harum odit maxime ad hic fugiat delectus animi ut expedita,
-          et minus fuga amet architecto commodi exercitationem accusantium corporis, dolorem
-          eligendi repellendus officia! Soluta, voluptates adipisci cupiditate voluptas, nesciunt
-          animi, molestiae quia eos ut nihil sit eum atque. Rerum dignissimos culpa nostrum aliquam
-          nemo voluptatibus sunt neque placeat! Beatae, eum. Exercitationem nulla possimus
-          consequuntur facilis commodi molestias?
-        </section>
-        <section>
-          Cupiditate reiciendis quisquam harum odit maxime ad hic fugiat delectus animi ut expedita,
-          et minus fuga amet architecto commodi exercitationem accusantium corporis, dolorem
-          eligendi repellendus officia! Soluta, voluptates adipisci cupiditate voluptas, nesciunt
-          animi, molestiae quia eos ut nihil sit eum atque. Rerum dignissimos culpa nostrum aliquam
-          nemo voluptatibus sunt neque placeat! Beatae, eum. Exercitationem nulla possimus
-          consequuntur facilis commodi molestias?
+        <section class="flex flex-col w-full">
+          <div class="flex items-center container mx-auto py-16 gap-x-32">
+            <div class="flex gap-x-16 shrink-0"></div>
+            <div class="shrink flex flex-col gap-y-8">
+              <p>
+                We tailor to international clients who seek luxury and high-end housing in Thailand.
+                Headquartered in Phuket, Thailand and focused on a target market of families,
+                foreigners, and investors. We pride ourselves in our high quality builds and modern
+                smart-home designs.
+              </p>
+              <Button
+                label="Learn More"
+                icon="pi pi-arrow-right"
+                iconPos="right"
+                class="self-end"
+              ></Button>
+            </div>
+          </div>
         </section>
       </main>
     </div>
@@ -195,9 +286,17 @@ watch(windowScroll.isScrolling, function stickyScroll() {
 </template>
 
 <style scoped>
-main {
-  section {
-    @apply p-4 container mx-auto;
+/* main {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-primary;
   }
-}
+  h1 {
+    @apply text-4xl;
+  }
+} */
 </style>

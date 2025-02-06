@@ -14,5 +14,9 @@ export default {
     // colors: {...colors}
     // }
   },
-  plugins: [require('tailwindcss-primeui')]
+  plugins: [
+    require('tailwindcss-primeui')
+    // require('@oviirup/tailwindcss-animate'),
+    // require('tailwindcss-intersect')
+  ]
 }
