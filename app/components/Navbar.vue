@@ -121,7 +121,7 @@ function toggleTheme() {
             @click="toggleTheme"
             class="hidden dark:flex"
             variant="text"
-            icon="pi pi-moon"
+            icon="pi pi-sun"
             size="large"
             rounded
           />

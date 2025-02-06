@@ -93,7 +93,7 @@ watch(windowScroll.isScrolling, function stickyScroll() {
 </script>
 
 <template>
-  <div ref="root" class="flex">
+  <div ref="root">
     <Navbar ref="navbar" />
     <div class="flex flex-col w-full">
       <!-- {{ navbar?.height }} -->
@@ -108,31 +108,47 @@ watch(windowScroll.isScrolling, function stickyScroll() {
           :videoId="videoId"
         />
       </div>
-      <!-- <div id="scrollTarget"></div> -->
-      <main class="flex flex-col w-full">
+      <div class="flex flex-col w-full">
         <section
           :style="{
             paddingTop: `${navbar?.height}px`
           }"
         >
-          <div class="container mx-auto">
-            <div ref="translateHeroTargetDiv" class="h-48 aspect-[21/9] self-end max-w-full"></div>
+          <div class="container mx-auto flex">
+            <div
+              ref="translateHeroTargetDiv"
+              class="w-3/4 aspect-[18.5/9] ms-auto max-w-full"
+            ></div>
           </div>
         </section>
         <section>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, eos? Ex nostrum nobis,
-          sapiente non eius perferendis quasi ipsam eligendi quos. Sint placeat velit similique
-          veritatis aperiam! Illum facilis illo dicta reprehenderit accusamus! Quo, cumque eos culpa
-          nostrum perferendis, ducimus obcaecati asperiores expedita impedit saepe dicta odio
-          inventore eaque consequuntur animi ullam modi numquam. Nisi mollitia delectus placeat
-          commodi deleniti.
+          <header class="text-primary text-6xl md:text-9xl">
+            <slot name="header"> <h1>Elite Manor</h1> </slot>
+          </header>
         </section>
         <section>
-          Sequi minima impedit sapiente, exercitationem voluptate distinctio doloribus culpa
-          voluptates odio! Id ipsa eum ex quibusdam dolorum temporibus, dicta at aperiam, ad
-          repellendus illo neque. Quam cumque ea voluptatibus eligendi labore! Accusamus totam ad
-          cum nesciunt sequi autem minima quos fugit sapiente quasi quae voluptatum soluta, sed odio
-          aspernatur ut dolor, sint vero tenetur! Nihil quibusdam possimus autem cumque repellat.
+          <header class="text-secondary text-6xl md:text-9xl">
+            <slot name="subheader">
+              <h1>Innovate</h1>
+              <h2>Living</h2>
+            </slot>
+            <slot name="subheader">
+              <h1>Classic</h1>
+              <h2>Luxury</h2>
+            </slot>
+          </header>
+        </section>
+      </div>
+      <main class="flex flex-col w-full">
+        <section>
+          <p>
+            Sequi minima impedit sapiente, exercitationem voluptate distinctio doloribus culpa
+            voluptates odio! Id ipsa eum ex quibusdam dolorum temporibus, dicta at aperiam, ad
+            repellendus illo neque. Quam cumque ea voluptatibus eligendi labore! Accusamus totam ad
+            cum nesciunt sequi autem minima quos fugit sapiente quasi quae voluptatum soluta, sed
+            odio aspernatur ut dolor, sint vero tenetur! Nihil quibusdam possimus autem cumque
+            repellat.
+          </p>
         </section>
         <section>
           Consectetur tenetur laboriosam fugit fuga quis aut, dolores illo repellendus, culpa
