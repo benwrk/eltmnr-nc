@@ -36,12 +36,11 @@ function videoStateChange(event: YT.OnStateChangeEvent) {
 </script>
 
 <template>
-  <!-- class="relative w-full h-screen max-h-[100vw] overflow-hidden flex items-center justify-center" -->
   <div ref="videoRoot" class="relative overflow-hidden flex items-center justify-center">
     <div
       :style="{
         width: `${Math.max(width, (height / 9) * 16)}px`,
-        height: `${2 * height}px`
+        height: `${3 * height}px`
       }"
     >
       <ScriptYouTubePlayer
@@ -51,7 +50,7 @@ function videoStateChange(event: YT.OnStateChangeEvent) {
         :video-id="videoId"
         @state-change="videoStateChange"
         :width="Math.max(width, (height / 9) * 16)"
-        :height="height * 2"
+        :height="height * 3"
         :player-vars="{
           autohide: 1,
           autoplay: props.autoplay ? 1 : 0,

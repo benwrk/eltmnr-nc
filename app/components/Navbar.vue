@@ -33,22 +33,21 @@ const items = ref([
   {
     label: 'Pages',
     class: { heading: true },
-    items: []
-    // items: [
-    //   ...(navData.value?.map((item) => ({
-    //     label: item.title,
-    //     url: item.path,
-    //     class: { active: true, 'p-menu-item-active': true }
-    //   })) ?? [])
-    //   // {
-    //   //   label: 'Refresh',
-    //   //   icon: 'pi pi-refresh'
-    //   // },
-    //   // {
-    //   //   label: 'Export',
-    //   //   icon: 'pi pi-upload'
-    //   // }
-    // ]
+    items: [
+      ...(navData.value?.map((item) => ({
+        label: item.title,
+        url: item.path,
+        class: { active: true, 'p-menu-item-active': true }
+      })) ?? [])
+      // {
+      //   label: 'Refresh',
+      //   icon: 'pi pi-refresh'
+      // },
+      // {
+      //   label: 'Export',
+      //   icon: 'pi pi-upload'
+      // }
+    ]
   }
 ])
 
@@ -72,12 +71,12 @@ function toggleTheme() {
 }
 </script>
 <template>
-  <div ref="root" class="fixed border-none w-full z-10 px-4">
+  <div ref="root" class="fixed border-none w-full z-10">
     <div id="menu-container" class="container mx-auto relative"></div>
     <div class="container mx-auto my-4 flex flex-col items-center">
       <Toolbar
         id="navbar"
-        class="w-[102.5%] max-w-[calc(100vw-4rem)] bg-surface-50 dark:bg-surface-800 bg-opacity-65 dark:bg-opacity-65 shadow-[0_0_50px_-10px_rgba(0,0,0,0.4)] backdrop-blur-md border border-white/20 flex items-center justify-between rounded-md p-2"
+        class="w-[102.5%] max-w-[calc(100vw-2rem)] bg-surface-50 dark:bg-surface-800 bg-opacity-65 dark:bg-opacity-65 shadow-[0_0_50px_-10px_rgba(0,0,0,0.4)] backdrop-blur-md border border-white/20 flex items-center justify-between rounded-md p-2"
       >
         <template #center>
           <!-- {{ navData }} -->

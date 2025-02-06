@@ -4,14 +4,16 @@ import { animate, inView, stagger } from 'motion'
 import HeroImage from '/home/hero.jpg'
 import Award1 from '/home/award-1.svg'
 import Award2 from '/home/award-2.svg'
+import Project1 from '/home/project-1.jpg'
+import Project2 from '/home/project-2.jpg'
+import ProjectLogo1 from '/logos/project-1-light.svg'
+import ProjectLogo2 from '/logos/project-2-light.svg'
 import { Image } from 'primevue'
 const route = useRoute()
 
 const { data: page } = await useAsyncData(route.path, () => {
   return queryCollection('content').path(route.path).first()
 })
-
-const navbar = ref<InstanceType<typeof Navbar>>()
 
 const videoId = page.value?.meta.youtubeVideoId as string
 
@@ -20,6 +22,8 @@ const translateHeroOriginDiv = ref<HTMLDivElement>()
 const translateHeroOriginSize = useElementSize(translateHeroOriginDiv)
 const translateHeroTargetDiv = ref<HTMLDivElement>()
 const translateHeroTargetSize = useElementSize(translateHeroTargetDiv)
+
+let navbarHeight: Ref<Number> | undefined
 
 const translateHeroValues = computed(() => ({
   size: {
@@ -97,6 +101,8 @@ watch(windowScroll.isScrolling, function stickyScroll() {
 })
 
 onMounted(() => {
+  navbarHeight = useElementSize(document.getElementById('navbar')).height
+
   const elements = [...document.getElementsByClassName('fade-in')]
 
   elements.forEach((element) => {
@@ -110,13 +116,14 @@ onMounted(() => {
 
 <template>
   <div ref="root">
-    <Navbar ref="navbar" />
     <div class="flex flex-col w-full">
-      <!-- {{ navbar?.height }} -->
+      <!-- HELLO: {{ navbar?.height }} {{ navbar === undefined }} -->
+      <!-- {{ getCurrentInstance()?.parent.navbar }} -->
+      <!-- {{ navbarHeight }} -->
       <div ref="translateHeroOriginDiv" class="relative w-full h-screen">
         <HeroVideoPlayer
           class="shadow-2xl"
-          :class="{ 'rounded-lg': translateHeroStage === 1 }"
+          :class="{ 'rounded-l-lg': translateHeroStage === 1 }"
           :style="{
             transform: `translate(${translateHeroValues.translate.x}px, ${translateHeroValues.translate.y}px)`,
             width: `${translateHeroValues.size.w}px`,
@@ -128,42 +135,40 @@ onMounted(() => {
       <div class="flex flex-col w-full">
         <section
           :style="{
-            paddingTop: `${navbar?.height}px`
+            paddingTop: `${navbarHeight}px`
           }"
-          class="flex flex-col gap-y-24 my-32"
+          class="flex flex-col gap-y-12 md:gap-y-24 md:my-32"
         >
-          <div class="flex container mx-auto items-center">
-            <div class="w-1/2 pr-12">
-              <header class="text-right fade-in">
-                <slot name="header">
-                  <h1 class="text-9xl">
-                    Elite<br />
-                    Manor
-                  </h1>
-                </slot>
+          <div class="flex items-center flex-wrap md:flex-nowrap gap-y-12">
+            <div class="basis-full md:basis-2/5 p-12">
+              <header class="md:text-right fade-in">
+                <h1 class="text-5xl md:text-9xl">
+                  Elite<br />
+                  Manor
+                </h1>
               </header>
             </div>
-            <div ref="translateHeroTargetDiv" class="w-1/2 max-h-80 aspect-video ms-auto"></div>
+            <div
+              ref="translateHeroTargetDiv"
+              class="basis-4/5 md:basis-3/5 h-96 ms-auto -order-1 md:-order-none"
+            ></div>
           </div>
-          <div class="flex items-center">
+          <div class="flex items-center flex-wrap gap-y-12">
             <Image
               :src="HeroImage"
               alt="Hero Image"
-              class="w-3/5 max-h-80 rounded-lg rounded-l-none fade-in shadow-2xl"
-              preview
+              class="basis-4/5 md:basis-3/5 h-96 rounded-lg rounded-l-none fade-in shadow-2xl"
             />
-            <div class="w-2/5 pl-12">
-              <header class="text-left">
-                <slot name="subheader">
-                  <h1 class="text-5xl text-muted-color-emphasis font-normal fade-in">
-                    Innovate Living
-                  </h1>
-                  <h1 class="text-5xl text-muted-color font-normal fade-in">Classic Luxury</h1>
-                </slot>
+            <div class="basis-full md:basis-2/5 p-12">
+              <header class="text-right md:text-left flex flex-col gap-y-4">
+                <h1 class="text-5xl text-muted-color-emphasis font-normal fade-in">
+                  Innovate Living
+                </h1>
+                <h1 class="text-5xl text-muted-color font-normal fade-in">Classic Luxury</h1>
               </header>
             </div>
           </div>
-          <div class="flex flex-col items-center container mx-auto max-w-[48rem] text-center">
+          <div class="flex flex-col items-center container mx-auto text-center px-4">
             <h1 class="text-primary text-2xl">
               To redefine innovative living through luxury, comfort, and pristine quality residences
             </h1>
@@ -171,7 +176,7 @@ onMounted(() => {
               Elite Manor is a real estate development firm that tailors to a global array of
               clients who seek the highest luxury in upscale homes.
             </p>
-            <p class="mt-6">
+            <p class="mt-2">
               Headquartered in Phuket, Thailand, we pride ourselves in constructing high quality
               builds and modern smart-home designs to families, investors, and homeowners from all
               walks of life.
@@ -189,9 +194,11 @@ onMounted(() => {
         </section>
       </div>
       <main>
-        <section class="flex flex-col w-full bg-highlight fade-in">
-          <div class="flex items-center container mx-auto py-16 gap-x-32">
-            <div class="flex gap-x-16 shrink-0">
+        <section class="flex flex-col w-full bg-highlight fade-in mt-64 md:mt-32">
+          <div
+            class="flex items-center container mx-auto py-16 px-4 gap-x-32 gap-y-16 flex-wrap md:flex-nowrap"
+          >
+            <div class="basis-full md:basis-auto flex gap-x-16 shrink-0 -mt-48">
               <Image
                 :src="Award1"
                 alt="Award 1"
@@ -205,7 +212,7 @@ onMounted(() => {
                 preview
               />
             </div>
-            <div class="shrink flex flex-col gap-y-8">
+            <div class="basis-full md:basis-auto flex flex-col gap-y-8">
               <p>
                 We tailor to international clients who seek luxury and high-end housing in Thailand.
                 Headquartered in Phuket, Thailand and focused on a target market of families,
@@ -221,44 +228,51 @@ onMounted(() => {
             </div>
           </div>
         </section>
+
         <section class="flex flex-col w-full">
-          <div class="flex items-center container mx-auto py-16 gap-x-32">
-            <div class="flex gap-x-16 shrink-0">
-              <!-- <Image :src="Award1" class="h-96 object-cover bg-primary-300 p-1 rounded-lg" />
-              <Image :src="Award2" class="h-96 object-cover bg-primary-300 p-1 rounded-lg" /> -->
-            </div>
-            <div class="shrink flex flex-col gap-y-8">
-              <p>
-                We tailor to international clients who seek luxury and high-end housing in Thailand.
-                Headquartered in Phuket, Thailand and focused on a target market of families,
-                foreigners, and investors. We pride ourselves in our high quality builds and modern
-                smart-home designs.
-              </p>
-              <Button
-                label="Learn More"
-                icon="pi pi-arrow-right"
-                iconPos="right"
-                class="self-end"
-              ></Button>
-            </div>
-          </div>
-        </section>
-        <section class="flex flex-col w-full">
-          <div class="flex flex-col items-center container mx-auto py-16 gap-x-32">
+          <div class="flex flex-col container mx-auto py-16 px-4 gap-y-8">
             <h1 class="text-4xl">Our Projects</h1>
-            <div class="shrink flex flex-col gap-y-8">
-              <p>
-                We tailor to international clients who seek luxury and high-end housing in Thailand.
-                Headquartered in Phuket, Thailand and focused on a target market of families,
-                foreigners, and investors. We pride ourselves in our high quality builds and modern
-                smart-home designs.
-              </p>
-              <Button
-                label="Learn More"
-                icon="pi pi-arrow-right"
-                iconPos="right"
-                class="self-end"
-              ></Button>
+            <div class="flex flex-col bg-highlight rounded-xl shadow-lg">
+              <div class="flex items-end p-4 md:p-12 gap-x-16 flex-wrap md:flex-nowrap gap-y-12">
+                <Image
+                  :src="Project1"
+                  alt="Project 1"
+                  class="basis-full md:basis-1/2 w-full rounded-lg aspect-square max-h-96"
+                />
+                <div class="basis-full md:basis-1/2 p-4 md:p-0 flex flex-col gap-y-8">
+                  <Image :src="ProjectLogo1" alt="Project Logo 1" class="w-36 self-start" />
+                  <p>
+                    The harmony of innovative living through luxury, comfort, and pristine quality
+                    residences in Phuket
+                  </p>
+                  <Button
+                    label="Learn More"
+                    icon="pi pi-arrow-right"
+                    iconPos="right"
+                    class="self-end"
+                  ></Button>
+                </div>
+              </div>
+              <hr
+                class="border-2 rounded-full border-primary-contrast w-[calc(100%-4rem)] self-center"
+              />
+              <div
+                class="my-4 md:my-0 flex items-end p-4 md:p-12 gap-x-16 flex-wrap md:flex-nowrap gap-y-12"
+              >
+                <Image
+                  :src="Project2"
+                  alt="Project 2"
+                  class="basis-full md:basis-1/2 w-full rounded-lg aspect-square max-h-96"
+                />
+                <div class="basis-full md:basis-1/2 p-4 md:p-0 flex flex-col gap-y-8">
+                  <Image :src="ProjectLogo2" alt="Project Logo 2" class="w-36 self-start" />
+                  <p>
+                    The harmony of innovative living through luxury, comfort, and pristine quality
+                    residences in Phuket
+                  </p>
+                  <Button label="Coming Soon" class="self-end" disabled></Button>
+                </div>
+              </div>
             </div>
           </div>
         </section>
