@@ -150,6 +150,7 @@ onMounted(() => {
               :src="HeroImage"
               alt="Hero Image"
               class="w-3/5 max-h-80 rounded-lg rounded-l-none fade-in shadow-2xl"
+              preview
             />
             <div class="w-2/5 pl-12">
               <header class="text-left">
