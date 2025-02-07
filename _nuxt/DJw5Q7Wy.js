@@ -1,1 +1,0 @@
-import{s as e}from"./d-AWkHfU.js";import{a as t,k as a,f as o,i as s,U as r}from"./BBavqV_q.js";const n={class:"container mx-auto"},f=t({__name:"Home",setup(c){return(m,_)=>(a(),o("div",n,[s(r(e),{label:"Test"})]))}});export{f as default};
