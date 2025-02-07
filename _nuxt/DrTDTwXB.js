@@ -1,1 +1,0 @@
-import{a as t,f as s,h as o,X as r,F as n,k as l,aU as m,B as p}from"./BrRKAZzO.js";const u=t({__name:"Base",setup(d){return(a,e)=>(l(),s(n,null,[o(m),r(a.$slots,"default",{},()=>[e[0]||(e[0]=p("Empty Slot"))])],64))}});export{u as default};

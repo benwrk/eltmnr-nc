@@ -1,0 +1,1 @@
+import{a,f as r,k as o,X as s,au as l,l as n}from"./Bb9CBaTK.js";const c=a({__name:"Alert",props:{color:{type:String,default:"orange"}},setup(e){return(t,d)=>(o(),r("div",{class:"alert",style:l({"border-color":e.color})},[s(t.$slots,"default",{},void 0,!0)],4))}}),p=Object.assign(n(c,[["__scopeId","data-v-55c1034a"]]),{__name:"Alert"});export{p as default};
