@@ -83,8 +83,8 @@ const props = defineProps({
         <div class="basis-full mt-12 fade-in">
           &copy; {{ new Date().getFullYear() }} All Rights Reserved<br />
           <div class="text-sm">
-            <a class="text-primary-emphasis-alt" href="/privacy-policy">Privacy Policy</a> |
-            <a class="text-primary-emphasis-alt" href="/terms-of-service">Terms of Service</a>
+            <a class="text-primary-emphasis-alt" href="#">Privacy Policy</a> |
+            <a class="text-primary-emphasis-alt" href="#">Terms of Service</a>
           </div>
         </div>
       </div>
