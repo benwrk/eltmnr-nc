@@ -41,7 +41,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="clock-wrapper w-24">
+  <div class="clock-wrapper">
     <div ref="clock" class="clock" :style="{ backgroundImage: `url(${ClockFace})` }">
       <div class="hour" ref="hour"></div>
       <div class="min" ref="min"></div>
