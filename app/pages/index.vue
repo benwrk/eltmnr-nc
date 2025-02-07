@@ -282,6 +282,7 @@ onMounted(() => {
                   :src="Project1"
                   alt="Project 1"
                   class="basis-full md:basis-1/2 w-full rounded-lg aspect-square max-h-96"
+                  preview
                 />
                 <div class="basis-full md:basis-1/2 p-4 md:p-0 flex flex-col gap-y-8">
                   <Image :src="ProjectLogo1" alt="Project Logo 1" class="w-36 self-start fade-in" />
@@ -307,6 +308,7 @@ onMounted(() => {
                   :src="Project2"
                   alt="Project 2"
                   class="basis-full md:basis-1/2 w-full rounded-lg aspect-square max-h-96"
+                  preview
                 />
                 <div class="basis-full md:basis-1/2 p-4 md:p-0 flex flex-col gap-y-8">
                   <Image :src="ProjectLogo2" alt="Project Logo 2" class="w-36 self-start fade-in" />
