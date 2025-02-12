@@ -30,10 +30,40 @@ export default defineNuxtConfig({
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
       title: 'Elite Manor',
-      meta: [{ name: 'Elite Manor', content: 'Elite Manor' }],
+      meta: [
+        { name: 'application-name', content: 'Elite Manor' },
+        { name: 'apple-mobile-web-app-title', content: 'Elite Manor' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' }
+      ],
       htmlAttrs: {
         class: 'dark-theme'
-      }
+      },
+      link: [
+        {
+          rel: 'icon',
+          type: 'image/png',
+          href: '/favicons/favicon-96x96.png',
+          sizes: '96x96'
+        },
+        {
+          rel: 'icon',
+          type: 'image/svg+xml',
+          href: '/favicons/favicon.svg'
+        },
+        {
+          rel: 'shortcut icon',
+          href: '/favicons/favicon.ico'
+        },
+        {
+          rel: 'apple-touch-icon',
+          href: '/favicons/apple-touch-icon.png',
+          sizes: '180x180'
+        },
+        {
+          rel: 'manifest',
+          href: '/favicons/site.webmanifest'
+        }
+      ]
     }
   },
   content: { preview: { dev: true } },
