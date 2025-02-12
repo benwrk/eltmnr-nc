@@ -20,7 +20,7 @@ const props = defineProps({
 
 <template>
   <div
-    class="fade-in flex items-end p-4 lg:p-12 lg:pb-0 gap-x-16 flex-wrap lg:flex-nowrap gap-y-12 bg-highlight-emphasis rounded-xl shadow-lg"
+    class="fade-in flex items-end p-4 lg:p-12 lg:pb-0 gap-x-16 flex-wrap lg:flex-nowrap gap-y-12"
   >
     <img
       :src="props.image"
