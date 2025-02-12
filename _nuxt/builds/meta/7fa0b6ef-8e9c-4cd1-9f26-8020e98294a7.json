@@ -1,0 +1,1 @@
+{"id":"7fa0b6ef-8e9c-4cd1-9f26-8020e98294a7","timestamp":1739367565004,"matcher":{"static":{"/api/content/homePage/database.sql":{"prerender":true},"/api/content/pages/database.sql":{"prerender":true}},"wildcard":{},"dynamic":{}},"prerendered":["/","/about","/register","/estate-management","/our-team","/contact-us"]}
