@@ -40,7 +40,7 @@ function videoStateChange(event: YT.OnStateChangeEvent) {
     <div
       :style="{
         width: `${Math.max(width, (height / 9) * 16)}px`,
-        height: `${3 * height}px`
+        height: `${4 * height}px`
       }"
     >
       <ScriptYouTubePlayer
@@ -50,7 +50,7 @@ function videoStateChange(event: YT.OnStateChangeEvent) {
         :video-id="videoId"
         @state-change="videoStateChange"
         :width="Math.max(width, (height / 9) * 16)"
-        :height="height * 3"
+        :height="height * 4"
         :player-vars="{
           autohide: 1,
           autoplay: props.autoplay ? 1 : 0,

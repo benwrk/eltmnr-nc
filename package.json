@@ -10,7 +10,7 @@
     "preview": "nuxt preview"
   },
   "dependencies": {
-    "@nuxt/content": "^3.0.0",
+    "@nuxt/content": "^3.1.1",
     "@nuxt/image": "1.9.0",
     "@nuxt/scripts": "0.9.5",
     "@primevue/themes": "^4.2.5",
