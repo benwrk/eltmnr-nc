@@ -1,0 +1,11 @@
+---
+heroImage: /hero-images/contact-us.png
+---
+
+# Contact Us
+
+We'll never share your information with anyone else.
+
+::contact
+By clicking this button, your email client should automatically launch, and ready to send an email to us with your subject and message. Please use the send button in your email client to finish sending us your message. In the case that your email client did not automatically launch, you can manually send your message to [sales@eltmnr.com](mailto:sales@eltmnr.com)
+::
