@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ClockFace from '/assets/media/clock-face.png'
+import ClockFace from '~/assets/media/clock-face.png'
 const props = defineProps({
   timezone: {
     type: String,
@@ -12,6 +12,7 @@ const min = ref<HTMLDivElement>()
 const sec = ref<HTMLDivElement>()
 onMounted(() => {
   const deg = 6
+  let interval: NodeJS.Timeout | undefined = undefined
 
   const setClock = () => {
     const day = new Date()
@@ -28,15 +29,19 @@ onMounted(() => {
     const mm = parseInt(splittedLts![1] ?? '0') * deg
     const ss = parseInt(splittedLts![2] ?? '0') * deg
 
-    hour.value!.style.transform = `rotateZ(${hh + mm / 12}deg)`
-    min.value!.style.transform = `rotateZ(${mm}deg)`
-    sec.value!.style.transform = `rotateZ(${ss}deg)`
+    try {
+      hour.value!.style.transform = `rotateZ(${hh + mm / 12}deg)`
+      min.value!.style.transform = `rotateZ(${mm}deg)`
+      sec.value!.style.transform = `rotateZ(${ss}deg)`
+    } catch (error) {
+      clearTimeout(interval)
+    }
   }
 
   // first time
   setClock()
   // Update every 1000 ms
-  setInterval(setClock, 1000)
+  interval = setInterval(setClock, 1000)
 })
 </script>
 

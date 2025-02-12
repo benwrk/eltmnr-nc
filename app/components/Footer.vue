@@ -11,10 +11,13 @@ const props = defineProps({
     default: '/logos/brand-dark.svg'
   }
 })
+
+const { data } = await useAsyncData('navbar', () => {
+  return queryCollectionNavigation('pages')
+})
 </script>
 <template>
-  <div ref="root" class="border-none w-full mt-16">
-    <div id="menu-container" class="container mx-auto relative"></div>
+  <div ref="root" class="border-none w-full">
     <div class="container mx-auto flex flex-col items-center">
       <div
         id="footer"
@@ -22,8 +25,8 @@ const props = defineProps({
       >
         <div class="flex flex-col fade-in">
           <a href="/">
-            <NuxtImg class="max-h-12 dark:hidden" :src="brandImage" />
-            <NuxtImg class="max-h-12 hidden dark:block" :src="brandImageDark" />
+            <NuxtImg class="max-h-12 dark:hidden" :src="props.brandImage" />
+            <NuxtImg class="max-h-12 hidden dark:block" :src="props.brandImageDark" />
           </a>
           <div class="flex mt-6">
             <Button
@@ -71,6 +74,13 @@ const props = defineProps({
         </div>
         <div class="flex flex-col fade-in">
           <h5>Pages</h5>
+          <ul class="mt-2 flex flex-col gap-x-2">
+            <li v-for="item in data" :key="item.id">
+              <NuxtLink :to="item.path" class="text-primary-emphasis-alt">
+                {{ item.title }}
+              </NuxtLink>
+            </li>
+          </ul>
         </div>
         <div class="flex flex-col fade-in">
           <h5>Projects</h5>

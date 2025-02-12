@@ -1,6 +1,13 @@
 <script setup lang="ts">
-import { Navbar } from '#components'
-import { animate, inView, stagger } from 'motion'
+import { Footer, Navbar } from '#components'
+import { animate, inView } from 'motion'
+
+const footer = ref<InstanceType<typeof Footer>>()
+// const navbar = ref<InstanceType<typeof Navbar>>()
+const { height: footerHeight } = useElementSize(footer)
+// const { height: navbarHeight } = useElementSize(navbar)
+const { height: windowHeight } = useWindowSize()
+
 onMounted(() => {
   const elements = [...document.getElementsByClassName('fade-in')]
 
@@ -14,11 +21,13 @@ onMounted(() => {
 </script>
 
 <template>
-  <div>
-    <NuxtLayout>
-      <Navbar id="navbar" />
-      <NuxtPage />
-      <Footer></Footer>
-    </NuxtLayout>
-  </div>
+  <!-- {{ footerHeight }} -->
+  <NuxtLayout>
+    <!-- {{ navbarHeight }}
+    {{ footerHeight }} -->
+    <!-- {{ windowHeight }} {{ footerHeight }} -->
+    <Navbar ref="navbar" id="navbar" />
+    <NuxtPage :style="{ minHeight: `${windowHeight - footerHeight}px` }" />
+    <Footer ref="footer" />
+  </NuxtLayout>
 </template>

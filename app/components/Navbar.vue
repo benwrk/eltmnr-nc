@@ -3,12 +3,8 @@ import { NuxtImg } from '#components'
 import { useElementSize } from '@vueuse/core'
 import { type Menu } from 'primevue'
 
-const router = useRouter()
-
-const route = useRoute()
-
-const { data: navData } = await useAsyncData('nav-' + route.path, () => {
-  return queryCollectionNavigation('content')
+const { data } = await useAsyncData('navbar', () => {
+  return queryCollectionNavigation('pages')
 })
 
 const props = defineProps({
@@ -24,32 +20,48 @@ const props = defineProps({
 
 const menu = ref<InstanceType<typeof Menu>>()
 const root = ref<HTMLDivElement | undefined>()
-const items = ref([
-  // {
-  //   label: 'Home',
-  //   icon: 'pi pi-home',
-  //   command: () => router.push('/')
-  // },
-  {
-    label: 'Pages',
-    class: { heading: true },
-    items: [
-      ...(navData.value?.map((item) => ({
-        label: item.title,
-        url: item.path,
-        class: { active: true, 'p-menu-item-active': true }
-      })) ?? [])
-      // {
-      //   label: 'Refresh',
-      //   icon: 'pi pi-refresh'
-      // },
-      // {
-      //   label: 'Export',
-      //   icon: 'pi pi-upload'
-      // }
-    ]
-  }
-])
+const items = computed(() => {
+  const pages = data.value
+  return [
+    {
+      label: 'Pages',
+      class: { heading: true },
+      items: [
+        ...(pages?.map((page) => ({
+          label: page.title,
+          url: page.path,
+          class: { active: true, 'p-menu-item-active': true }
+        })) ?? [])
+      ]
+    }
+  ]
+})
+// ref([
+//   // {
+//   //   label: 'Home',
+//   //   icon: 'pi pi-home',
+//   //   command: () => router.push('/')
+//   // },
+//   {
+//     label: 'Pages',
+//     class: { heading: true },
+//     items: [
+//       ...(data.value[0].children.map((item) => ({
+//         label: item.title,
+//         url: item.path,
+//         class: { active: true, 'p-menu-item-active': true }
+//       })) ?? [])
+//       // {
+//       //   label: 'Refresh',
+//       //   icon: 'pi pi-refresh'
+//       // },
+//       // {
+//       //   label: 'Export',
+//       //   icon: 'pi pi-upload'
+//       // }
+//     ]
+//   }
+// ])
 
 const toggle = (event: MouseEvent) => {
   menu.value?.toggle(event)
@@ -79,7 +91,6 @@ function toggleTheme() {
         class="w-[102.5%] max-w-[calc(100vw-2rem)] bg-surface-50 dark:bg-surface-800 bg-opacity-65 dark:bg-opacity-65 shadow-[0_0_50px_-10px_rgba(0,0,0,0.4)] backdrop-blur-md border border-white/20 flex items-center justify-between rounded-lg p-2"
       >
         <template #center>
-          <!-- {{ navData }} -->
           <div class="basis-1/4 flex justify-start">
             <Button
               variant="text"

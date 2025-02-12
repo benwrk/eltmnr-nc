@@ -1,10 +1,41 @@
-import { defineContentConfig, defineCollection } from '@nuxt/content'
+import { defineContentConfig, defineCollection, z } from '@nuxt/content'
+
+const baseSchema = z
+  .object({
+    title: z.string(),
+    date: z.date()
+  })
+  .required()
 
 export default defineContentConfig({
   collections: {
-    content: defineCollection({
+    homePage: defineCollection({
       type: 'page',
-      source: '**'
+      source: {
+        include: 'index.md',
+        prefix: '/'
+      },
+      schema: baseSchema.merge(
+        z
+          .object({
+            youtubeVideoId: z.string()
+          })
+          .required()
+      )
+    }),
+    pages: defineCollection({
+      type: 'page',
+      source: {
+        include: 'pages/**',
+        prefix: '/'
+      },
+      schema: baseSchema.merge(
+        z
+          .object({
+            heroImage: z.string()
+          })
+          .partial()
+      )
     })
   }
 })

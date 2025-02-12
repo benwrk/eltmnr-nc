@@ -1,18 +1,17 @@
 <script setup lang="ts">
-import { Navbar } from '#components'
-import { animate, inView, stagger } from 'motion'
-import HeroImage from '/home/hero.jpg'
+import { Image } from 'primevue'
 import Award1 from '/home/award-1.svg'
 import Award2 from '/home/award-2.svg'
+import HeroImage from '/home/hero.jpg'
 import Project1 from '/home/project-1.jpg'
 import Project2 from '/home/project-2.jpg'
 import ProjectLogo1 from '/logos/project-1-light.svg'
 import ProjectLogo2 from '/logos/project-2-light.svg'
-import { Image } from 'primevue'
+
 const route = useRoute()
 
-const { data: page } = await useAsyncData(route.path, () => {
-  return queryCollection('content').path(route.path).first()
+const { data } = await useAsyncData(route.path, () => {
+  return queryCollection('homePage').path(route.path).first()
 })
 
 const faqs = [
@@ -68,7 +67,7 @@ const faqs = [
   }
 ]
 
-const videoId = page.value?.meta.youtubeVideoId as string
+const videoId = data.value?.youtubeVideoId
 
 const windowScroll = useWindowScroll()
 const translateHeroOriginDiv = ref<HTMLDivElement>()
@@ -159,7 +158,8 @@ onMounted(() => {
 </script>
 
 <template>
-  <div ref="root">
+  <div ref="root" class="mb-16">
+    <!-- {{ page }} -->
     <div class="flex flex-col w-full">
       <!-- HELLO: {{ navbar?.height }} {{ navbar === undefined }} -->
       <!-- {{ getCurrentInstance()?.parent.navbar }} -->
@@ -173,7 +173,7 @@ onMounted(() => {
             width: `${translateHeroValues.size.w}px`,
             height: `${translateHeroValues.size.h}px`
           }"
-          :videoId="videoId"
+          :videoId="videoId!"
         />
       </div>
       <div class="flex flex-col w-full">
@@ -393,17 +393,4 @@ onMounted(() => {
     }
   }
 }
-/* main {
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply text-primary;
-  }
-  h1 {
-    @apply text-4xl;
-  }
-} */
 </style>
