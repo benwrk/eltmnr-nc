@@ -2,10 +2,9 @@ import { defineContentConfig, defineCollection, z } from '@nuxt/content'
 
 const baseSchema = z
   .object({
-    title: z.string(),
-    date: z.date()
+    title: z.string()
   })
-  .required()
+  .partial()
 
 export default defineContentConfig({
   collections: {

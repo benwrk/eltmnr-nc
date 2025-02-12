@@ -370,7 +370,7 @@ onMounted(() => {
               src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15810.110005276163!2d98.3336935!3d7.8397258!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30502f8b828258dd%3A0x65e112219235d17f!2sLavish%20Estates%20by%20Elite%20Manor!5e0!3m2!1sen!2sth!4v1716525107023!5m2!1sen!2sth"
               width="100%"
               frameborder="0"
-              allowfullscreen=""
+              allowfullscreen="false"
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
             >

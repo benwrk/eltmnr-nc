@@ -1,13 +1,31 @@
 ---
-heroImage: /hero-images/about.jpg
+heroImage: /hero-images/our-team.jpg
 ---
 
-# About Elite Manor
+# Our Team
 
-## "To redefine innovative living through luxury, comfort, and pristine quality residences”
+::person{image="/images/person-peter-a.png" name="Peter Areewong"}
+Peter is the Chief Executive Officer at Elite Manor. With over 8 years of experience working in the Engineering and Real Estate industry in North America, he expands his innovative ideas and quality initiatives into Southeast Asia. Currently overseeing all operations and strictly implementing (ASTM) International Building Standard codes into each Elite Manor project, he ensures that clients are presented with the highest-quality Estates that they deserve. In conjunction to his leadership at Elite Manor, he is also the CEO of Elite Manor Construction Thailand and APAC Construction USA, providing services to commercial enterprises such as Real Estate Developers, Hospitality firms, Fitness facilities, and Retail clients. Prior to APAC Construction, Peter interned at Pepper Construction Group in 2016 where he was the structure engineer inspecting 40-story high-rise buildings in downtown Chicago. In 2015, he started his Real Estate investment career funding and managing rental properties in the Chicagoland area. Peter holds a mater’s degree in Structural Engineering and a bachelor’s degree in Civil Engineering from the Illinois Institution of Technology, graduating as a presidential scholar. In his free time, he enjoys trading stocks and reading on technological advances.
+::
 
-Elite Manor is a real estate development firm that tailors to international clients who seek luxury and high-end housing in Thailand. Headquartered in Phuket, Thailand and focused on a target market of families, foreigners, and investors. We pride ourselves on our high quality builds and modern smart-home designs.
+<br>
 
-Elite Manor constructs properties that are high quality, luxurious, yet innovative in design. We focus on delivering the best possible residences with the sole interest of our client’s needs. By partnering with industry leading designers and an international management team, we only strive for the best. We hope to be a part of your journey in finding your Forever Manor…
+::person{image="/images/person-pat-n.png" name="Pat Na Takuathung"}
+Pat is the Chief Operating Officer of Elite Manor. She develops the company's strategic business plan and overseas project management efforts throughout the firm. Raised in Chicago and having graduated from Loyola University in Healthcare Administration, Pat has had over a decade of experience working in the Management Consulting, Software Finance, and Hospital industries in North America. Her passion lies in solving problems and assisting her clients with finance process transformations. She has advised boutique to large $12 billion ‐ revenue clients from many verticals including: Real Estate, Banking, Space, Travel, Beauty, Manufacturing, and Healthcare. Prior to joining Elite Manor, Pat worked at Strata Decision Technology, leading the Cost Accounting and Decision Support team. She also worked at CohnReznick in CFO Advisory where she implemented Corporate Performance Management (CPM) and Integrated Business Planning (IBP) solutions to her clients. Additionally, she has also worked at Kaufman Hall, implementing Budgeting, Financial Planning, and Cost Accounting/Decision Support products to over 1,000 hospitals in the United States. There, she helped hospital systems improve their electronic financial management processes while maintaining data integrity. She was also a Revenue Cycle Associate at Oak Street Health and interned at GE Healthcare ‐ The Camden Group. Pat currently resides in Thailand and enjoys scuba diving and horseback riding during her free time.
+::
 
-With almost a decade of experience working in the Engineering and Real Estate industry in North America, the CEO and Founder have collaborated with an award-winning professional design team who have successfully designed projects such as Sri Panwa Private Residences, Ritz Carlton Residences Bangkok and The Residences at Mandarin Oriental Bangkok. This partnership ensures to deliver high quality, luxurious, yet innovative designs to estate owners worldwide.
+<br><br>
+
+# Key Partners
+
+<br>
+
+::partner{image="/logos/logo-krittika-black.svg"}
+Krittika Studio is our interior designer. Their inspiration stems from fundamental classical design, where order, symmetry and proportion are combined to create timeless bespoke homes. By reinterpreting and updating that classical aesthetic with clean modern lines and subtle design details, they create tailored living spaces that respond to the needs of today.
+::
+
+<br>
+
+::partner{image="/logos/logo-ilds.png"}
+I Like Design Studio (ILDS) is a Bangkok-based architecture design, interior and other related design studio. The firm started from passion and the belief that good design creates good life. Through research on cultural contexts and design possibilities, they are able to solve any problem.
+::

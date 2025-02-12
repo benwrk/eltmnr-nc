@@ -1,8 +1,15 @@
-import { colors } from './colors.config'
+import remark from 'remark'
 
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ['./app/**/*.{js,vue,ts}', './content/**/*.{js,vue,ts}'],
+  content: {
+    files: ['./app/**/*.{js,vue,ts,md}', './content/**/*.{js,vue,ts,md}']
+    // transform: {
+    //   md: (content) => {
+    //     return remark().process(content)
+    //   }
+    // }
+  },
   darkMode: ['selector', '.dark-theme'],
   theme: {
     fontFamily: {
@@ -16,6 +23,7 @@ export default {
   },
   plugins: [
     require('tailwindcss-primeui')
+    // require('@tailwindcss/typography')
     // require('@oviirup/tailwindcss-animate'),
     // require('tailwindcss-intersect')
   ]
