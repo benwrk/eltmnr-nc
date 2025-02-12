@@ -7,11 +7,7 @@ onMounted(() => {
   elements.forEach((element) => {
     ;(element as HTMLElement).style.opacity = '0'
     inView(element, () => {
-      animate(
-        element,
-        { opacity: [0, 1, 1, 1] },
-        { delay: stagger(1, { startDelay: 0.2 }), duration: 4 }
-      )
+      animate(element, { opacity: [0, 1], y: [100, 0] }, { duration: 0.9, delay: 0.5 })
     })
   })
 })
