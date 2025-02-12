@@ -1,6 +1,4 @@
 ---
-title: Home | Elite Manor
-description: Elite Manor
 youtubeVideoId: _euqkgj_bYE
 ---
 
