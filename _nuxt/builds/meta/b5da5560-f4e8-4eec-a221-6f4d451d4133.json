@@ -1,1 +1,0 @@
-{"id":"b5da5560-f4e8-4eec-a221-6f4d451d4133","timestamp":1739358992533,"matcher":{"static":{"/api/content/homePage/database.sql":{"prerender":true},"/api/content/pages/database.sql":{"prerender":true}},"wildcard":{},"dynamic":{}},"prerendered":["/","/about","/our-team"]}
