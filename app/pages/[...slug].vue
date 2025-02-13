@@ -22,10 +22,10 @@ if (!page.value) {
       v-if="page?.heroImage"
       :src="page.heroImage"
       alt="Hero Image"
-      class="w-full h-[80vh] object-cover"
+      class="w-full h-[80vh] object-cover fade-in"
     />
     <div class="container mx-auto py-16 px-4">
-      <ContentRenderer class="content" v-if="page" :value="page" />
+      <ContentRenderer class="content fade-in" v-if="page" :value="page" />
     </div>
   </div>
 </template>

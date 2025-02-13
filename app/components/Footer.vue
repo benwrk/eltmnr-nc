@@ -17,11 +17,11 @@ const { data } = await useAsyncData('navbar', () => {
 })
 </script>
 <template>
-  <div ref="root" class="border-none w-full">
+  <div ref="root" class="border-none w-full fade-in">
     <div class="container mx-auto flex flex-col items-center">
       <div
         id="footer"
-        class="flex-wrap w-[102.5%] max-w-[calc(100vw-2rem)] bg-surface-0 dark:bg-surface-800 shadow-[0_0_50px_-10px_rgba(0,0,0,0.2)] border border-white/20 border-b-0 flex items-start justify-between rounded-t-lg p-12"
+        class="flex-wrap w-[102.5%] max-w-[calc(100vw-2rem)] bg-surface-0 dark:bg-surface-800 shadow-[0_0_50px_-10px_rgba(0,0,0,0.2)] border border-white/20 border-b-0 flex items-start justify-between rounded-t-lg p-12 overflow-hidden"
       >
         <div class="flex flex-col fade-in">
           <a href="/">

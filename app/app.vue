@@ -10,7 +10,6 @@ const { height: windowHeight } = useWindowSize()
 
 onMounted(() => {
   const elements = [...document.getElementsByClassName('fade-in')]
-
   elements.forEach((element) => {
     ;(element as HTMLElement).style.opacity = '0'
     inView(element, () => {
@@ -18,6 +17,17 @@ onMounted(() => {
     })
   })
 })
+
+// onMounted(() => {
+//   const elements = [...document.querySelectorAll('div, img, p, button, h1, h2, h3, h4, h5, h6')]
+
+//   elements.forEach((element) => {
+//     ;(element as HTMLElement).style.opacity = '0'
+//     inView(element, () => {
+//       animate(element, { opacity: [0, 1], y: [100, 0] }, { duration: 0.9, delay: 0.5 })
+//     })
+//   })
+// })
 </script>
 
 <template>

@@ -35,6 +35,20 @@ export default defineContentConfig({
           })
           .partial()
       )
+    }),
+    projects: defineCollection({
+      type: 'page',
+      source: {
+        include: 'projects/**',
+        prefix: '/projects'
+      },
+      schema: baseSchema.merge(
+        z
+          .object({
+            heroImage: z.string()
+          })
+          .partial()
+      )
     })
   }
 })
