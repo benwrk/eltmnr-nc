@@ -51,7 +51,7 @@ export default defineContentConfig({
       type: 'page',
       source: {
         include: 'projects/**',
-        prefix: '/projects'
+        prefix: '/project'
       },
       schema: baseSchema.merge(
         z
