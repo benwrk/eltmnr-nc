@@ -2,8 +2,8 @@
 const route = useRoute()
 console.log(route.path)
 
-const { data: page } = await useAsyncData('page-' + route.path, () => {
-  return queryCollection('pages').path(route.path).first()
+const { data: page } = await useAsyncData('project-' + route.path, () => {
+  return queryCollection('project').path(route.path).first()
 })
 
 useSeoMeta({

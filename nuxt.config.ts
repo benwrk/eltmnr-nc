@@ -66,6 +66,12 @@ export default defineNuxtConfig({
       ]
     }
   },
+  // nitro: {
+  //   prerender: {
+  //     autoSubfolderIndex: true,
+  //     crawlLinks: true
+  //   }
+  // },
   content: {
     preview: { dev: true },
     renderer: { anchorLinks: { h1: true, h2: true, h3: true, h4: true, h5: true, h6: true } }

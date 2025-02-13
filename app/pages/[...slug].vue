@@ -3,7 +3,7 @@ const route = useRoute()
 console.log(route.path)
 
 const { data: page } = await useAsyncData('page-' + route.path, () => {
-  return queryCollection('pages').path(route.path).first()
+  return queryCollection('page').path(route.path).first()
 })
 
 useSeoMeta({

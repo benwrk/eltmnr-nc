@@ -11,8 +11,7 @@ export default defineContentConfig({
     homePage: defineCollection({
       type: 'page',
       source: {
-        include: 'index.md',
-        prefix: '/'
+        include: 'index.md'
       },
       schema: baseSchema.merge(
         z
@@ -23,7 +22,7 @@ export default defineContentConfig({
           .required()
       )
     }),
-    pages: defineCollection({
+    page: defineCollection({
       type: 'page',
       source: {
         include: 'pages/**',
@@ -39,7 +38,7 @@ export default defineContentConfig({
             /**
              * Whether to hide the navigation to this page
              */
-            navHidden: z.boolean(),
+            navHidden: z.boolean().default(false),
             /**
              * Navigation order
              */
@@ -48,7 +47,7 @@ export default defineContentConfig({
           .partial()
       )
     }),
-    projects: defineCollection({
+    project: defineCollection({
       type: 'page',
       source: {
         include: 'projects/**',
@@ -58,6 +57,8 @@ export default defineContentConfig({
         z
           .object({
             heroImage: z.string(),
+            navHidden: z.boolean().default(false),
+            navOrder: z.number().default(0),
             gallery: z
               .object({
                 images: z.array(

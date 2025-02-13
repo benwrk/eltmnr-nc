@@ -7,6 +7,7 @@ import Project1 from '/home/project-1.jpg'
 import Project2 from '/home/project-2.jpg'
 import ProjectLogo1 from '/logos/project-1-light.svg'
 import ProjectLogo2 from '/logos/project-2-light.svg'
+import { tr } from 'motion/react-client'
 
 const route = useRoute()
 
@@ -72,7 +73,7 @@ watch(windowScroll.isScrolling, function stickyScroll() {
   }
 
   const top = translateHeroOriginDiv.value?.offsetTop ?? 0
-  const bottom = top + translateHeroOriginSize.height.value
+  const bottom = top + translateHeroOriginSize.height.value + 1
   const scrollTop = windowScroll.y.value
   console.log({ top, bottom, scrollTop, direction: previousActiveScrollDirection.value })
 
@@ -106,15 +107,11 @@ onMounted(() => {
 
 <template>
   <div ref="root" class="mb-16">
-    <!-- {{ page }} -->
     <div class="flex flex-col w-full">
-      <!-- HELLO: {{ navbar?.height }} {{ navbar === undefined }} -->
-      <!-- {{ getCurrentInstance()?.parent.navbar }} -->
-      <!-- {{ navbarHeight }} -->
       <div ref="translateHeroOriginDiv" class="relative w-full h-screen">
         <HeroVideoPlayer
           class="shadow-2xl"
-          :class="{ 'rounded-l-lg': translateHeroStage === 1 }"
+          :class="{ 'rounded-l-lg': translateHeroStage >= 0.99 }"
           :style="{
             transform: `translate(${translateHeroValues.translate.x}px, ${translateHeroValues.translate.y}px)`,
             width: `${translateHeroValues.size.w}px`,
@@ -286,7 +283,7 @@ onMounted(() => {
         </section>
         <section class="flex container mx-auto justify-center px-4 py-16">
           <div
-            class="fade-in flex justify-center md:justify-between rounded-lg shadow-lg pt-4 pb-12 w-full bg-highlight dark:bg-surface-800"
+            class="p-4 fade-in flex justify-center md:justify-between rounded-lg shadow-lg pt-4 pb-12 w-full bg-highlight dark:bg-surface-800"
           >
             <div class="shrink fade-in hidden lg:flex flex-col items-center">
               <WorldClock class="scale-[.6] -my-8 -mx-8" timezone="Europe/London" />
@@ -296,7 +293,7 @@ onMounted(() => {
               <WorldClock class="scale-[.6] -my-8 -mx-8" timezone="Europe/Paris" />
               Paris
             </div>
-            <div class="shrink fade-in flex flex-col items-center">
+            <div class="shrink fade-in flex flex-col items-center font-bold text-primary">
               <WorldClock class="-my-8 -mx-8 scale-75" timezone="Asia/Bangkok" />
               Phuket
             </div>

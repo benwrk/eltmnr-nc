@@ -33,6 +33,12 @@ function videoStateChange(event: YT.OnStateChangeEvent) {
     videoStarted.value = true
   }
 }
+
+onMounted(() => {
+  videoStarted.value =
+    video.value?.player !== undefined &&
+    video.value?.player?.getPlayerState() !== YT.PlayerState.UNSTARTED
+})
 </script>
 
 <template>
@@ -82,8 +88,12 @@ function videoStateChange(event: YT.OnStateChangeEvent) {
       </ScriptYouTubePlayer>
     </div>
     <div
-      class="absolute w-full h-full top-0 left-0 bg-black"
-      :class="{ 'bg-transparent': videoStarted, 'pointer-events-none': clickable }"
-    ></div>
+      class="absolute w-full h-full top-0 left-0 flex flex-wrap gap-x-4 items-center justify-center bg-surface-50 dark:bg-surface-950 text-primary-emphasis duration-300"
+      :class="{ 'opacity-0': videoStarted, 'pointer-events-none': clickable }"
+    >
+      <i class="pi pi-youtube text-6xl"></i>
+      <i class="pi pi-spinner animate-spin text-2xl"></i>
+      <!-- <span class="basis-full text-center">Video Loading...</span> -->
+    </div>
   </div>
 </template>

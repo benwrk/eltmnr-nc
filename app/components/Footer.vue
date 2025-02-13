@@ -14,7 +14,7 @@ const props = defineProps({
 })
 
 const { data } = await useAsyncData('navbar', () => {
-  return queryCollectionNavigation('pages', ['navHidden', 'navOrder'])
+  return queryCollectionNavigation('page', ['navHidden', 'navOrder'])
 })
 </script>
 <template>

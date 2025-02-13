@@ -17,17 +17,6 @@ onMounted(() => {
     })
   })
 })
-
-// onMounted(() => {
-//   const elements = [...document.querySelectorAll('div, img, p, button, h1, h2, h3, h4, h5, h6')]
-
-//   elements.forEach((element) => {
-//     ;(element as HTMLElement).style.opacity = '0'
-//     inView(element, () => {
-//       animate(element, { opacity: [0, 1], y: [100, 0] }, { duration: 0.9, delay: 0.5 })
-//     })
-//   })
-// })
 </script>
 
 <template>
@@ -41,3 +30,9 @@ onMounted(() => {
     <Footer ref="footer" />
   </NuxtLayout>
 </template>
+
+<style>
+/* div {
+  @apply animate-fadeindown animate-enter animate-ease-in-out animate-duration-500;
+} */
+</style>

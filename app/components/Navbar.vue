@@ -1,13 +1,16 @@
 <script setup lang="ts">
 import { NuxtImg } from '#components'
-import { pageSchema } from '@nuxt/content'
+import { pageSchema, type ContentNavigationItem } from '@nuxt/content'
 import { useElementSize } from '@vueuse/core'
 import { type Menu } from 'primevue'
 
 const route = useRoute()
 
-const { data } = await useAsyncData('navbar', () => {
-  return queryCollectionNavigation('pages', ['navHidden', 'navOrder'])
+const { data } = await useAsyncData('navbar-page', () => {
+  return queryCollectionNavigation('page', ['navHidden', 'navOrder'])
+})
+const { data: projectData } = await useAsyncData('navbar-project', () => {
+  return queryCollectionNavigation('project', ['navHidden', 'navOrder'])
 })
 
 const props = defineProps({
@@ -24,7 +27,8 @@ const props = defineProps({
 const menu = ref<InstanceType<typeof Menu>>()
 const root = ref<HTMLDivElement | undefined>()
 const items = computed(() => {
-  const pages = data.value
+  const page = data.value
+  const project = projectData.value?.at(0)?.children as ContentNavigationItem[] | undefined
   return [
     {
       label: 'Home',
@@ -39,9 +43,27 @@ const items = computed(() => {
       label: 'Pages',
       class: { heading: true },
       items: [
-        ...(pages
+        ...(page
           ?.filter((page) => !page.navHidden)
           .sort((a, b) => a.navOrder - b.navOrder)
+          .map((page) => ({
+            label: page.title,
+            url: page.path,
+            class: {
+              active: route.path === page.path,
+              'p-menu-item-active': true,
+              submenu: true
+            }
+          })) ?? [])
+      ]
+    },
+    {
+      label: 'Projects',
+      class: { heading: true },
+      items: [
+        ...(project
+          ?.filter((page) => !page.navHidden)
+          .sort((a: any, b: any) => a.navOrder - b.navOrder)
           .map((page) => ({
             label: page.title,
             url: page.path,

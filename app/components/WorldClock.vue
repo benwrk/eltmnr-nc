@@ -98,7 +98,7 @@ onMounted(() => {
   position: absolute;
   height: 50%;
   width: 6px;
-  @apply bg-primary-500;
+  @apply bg-surface-500;
   border-radius: 6px;
 }
 .min {
@@ -109,7 +109,7 @@ onMounted(() => {
   content: '';
   height: 50%;
   width: 4px;
-  @apply bg-primary-500;
+  @apply bg-surface-500;
   border-radius: 4px;
 }
 .sec {
