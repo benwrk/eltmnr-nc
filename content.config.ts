@@ -17,7 +17,8 @@ export default defineContentConfig({
       schema: baseSchema.merge(
         z
           .object({
-            youtubeVideoId: z.string()
+            youtubeVideoId: z.string(),
+            faqs: z.array(z.object({ question: z.string(), answer: z.string() }))
           })
           .required()
       )
@@ -31,7 +32,14 @@ export default defineContentConfig({
       schema: baseSchema.merge(
         z
           .object({
-            heroImage: z.string()
+            /**
+             * URL of the hero image
+             */
+            heroImage: z.string(),
+            /**
+             * Whether to hide the navigation to this page
+             */
+            navHidden: z.boolean()
           })
           .partial()
       )
@@ -45,7 +53,19 @@ export default defineContentConfig({
       schema: baseSchema.merge(
         z
           .object({
-            heroImage: z.string()
+            heroImage: z.string(),
+            gallery: z
+              .object({
+                images: z.array(
+                  z
+                    .object({
+                      name: z.string(),
+                      hrefs: z.array(z.string())
+                    })
+                    .partial()
+                )
+              })
+              .partial()
           })
           .partial()
       )
