@@ -25,7 +25,7 @@ export default defineContentConfig({
     page: defineCollection({
       type: 'page',
       source: {
-        include: 'pages/**',
+        include: 'page/**',
         prefix: '/'
       },
       schema: baseSchema.merge(
@@ -50,7 +50,7 @@ export default defineContentConfig({
     project: defineCollection({
       type: 'page',
       source: {
-        include: 'projects/**',
+        include: 'project/**',
         prefix: '/project'
       },
       schema: baseSchema.merge(
