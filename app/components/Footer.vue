@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { NuxtImg } from '#components'
+import { a } from 'motion/react-client'
 import { Button } from 'primevue'
 const props = defineProps({
   brandImage: {
@@ -13,7 +14,7 @@ const props = defineProps({
 })
 
 const { data } = await useAsyncData('navbar', () => {
-  return queryCollectionNavigation('pages')
+  return queryCollectionNavigation('pages', ['navHidden', 'navOrder'])
 })
 </script>
 <template>
@@ -75,7 +76,12 @@ const { data } = await useAsyncData('navbar', () => {
         <div class="flex flex-col fade-in">
           <h5>Pages</h5>
           <ul class="mt-2 flex flex-col gap-x-2">
-            <li v-for="item in data" :key="item.id">
+            <li
+              v-for="item in data
+                ?.filter((i) => !i.navHidden)
+                .sort((a, b) => a.navOrder - b.navOrder)"
+              :key="item.id"
+            >
               <NuxtLink :to="item.path" class="text-primary-emphasis-alt">
                 {{ item.title }}
               </NuxtLink>

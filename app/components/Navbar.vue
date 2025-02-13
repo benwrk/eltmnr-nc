@@ -1,10 +1,13 @@
 <script setup lang="ts">
 import { NuxtImg } from '#components'
+import { pageSchema } from '@nuxt/content'
 import { useElementSize } from '@vueuse/core'
 import { type Menu } from 'primevue'
 
+const route = useRoute()
+
 const { data } = await useAsyncData('navbar', () => {
-  return queryCollectionNavigation('pages')
+  return queryCollectionNavigation('pages', ['navHidden', 'navOrder'])
 })
 
 const props = defineProps({
@@ -24,44 +27,34 @@ const items = computed(() => {
   const pages = data.value
   return [
     {
+      label: 'Home',
+      url: '/',
+      class: {
+        active: route.path === '/',
+        'p-menu-item-active': true,
+        heading: true
+      }
+    },
+    {
       label: 'Pages',
       class: { heading: true },
       items: [
-        ...(pages?.map((page) => ({
-          label: page.title,
-          url: page.path,
-          class: { active: true, 'p-menu-item-active': true }
-        })) ?? [])
+        ...(pages
+          ?.filter((page) => !page.navHidden)
+          .sort((a, b) => a.navOrder - b.navOrder)
+          .map((page) => ({
+            label: page.title,
+            url: page.path,
+            class: {
+              active: route.path === page.path,
+              'p-menu-item-active': true,
+              submenu: true
+            }
+          })) ?? [])
       ]
     }
   ]
 })
-// ref([
-//   // {
-//   //   label: 'Home',
-//   //   icon: 'pi pi-home',
-//   //   command: () => router.push('/')
-//   // },
-//   {
-//     label: 'Pages',
-//     class: { heading: true },
-//     items: [
-//       ...(data.value[0].children.map((item) => ({
-//         label: item.title,
-//         url: item.path,
-//         class: { active: true, 'p-menu-item-active': true }
-//       })) ?? [])
-//       // {
-//       //   label: 'Refresh',
-//       //   icon: 'pi pi-refresh'
-//       // },
-//       // {
-//       //   label: 'Export',
-//       //   icon: 'pi pi-upload'
-//       // }
-//     ]
-//   }
-// ])
 
 const toggle = (event: MouseEvent) => {
   menu.value?.toggle(event)
@@ -84,6 +77,7 @@ function toggleTheme() {
 </script>
 <template>
   <div ref="root" class="fixed border-none w-full z-10">
+    <!-- {{ route.path }} -->
     <div id="menu-container" class="container mx-auto relative"></div>
     <div class="container mx-auto my-4 flex flex-col items-center">
       <Toolbar
@@ -177,6 +171,12 @@ function toggleTheme() {
 
   /* .p-menu-item-background {
     @apply bg-surface-800;
-  } */
+    } */
+}
+
+:deep(.submenu) {
+  .p-menu-item-link {
+    @apply pl-8;
+  }
 }
 </style>

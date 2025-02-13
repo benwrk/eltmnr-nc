@@ -39,7 +39,11 @@ export default defineContentConfig({
             /**
              * Whether to hide the navigation to this page
              */
-            navHidden: z.boolean()
+            navHidden: z.boolean(),
+            /**
+             * Navigation order
+             */
+            navOrder: z.number().default(0)
           })
           .partial()
       )

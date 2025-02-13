@@ -1,5 +1,6 @@
 ---
 heroImage: /hero-images/contact-us.png
+navOrder: 1
 ---
 
 # Contact Us
