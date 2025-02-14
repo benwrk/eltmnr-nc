@@ -38,11 +38,11 @@ export default defineContentConfig({
             /**
              * Whether to hide the navigation to this page
              */
-            navHidden: z.boolean().default(false),
+            navHidden: z.boolean().default(false)
             /**
              * Navigation order
              */
-            navOrder: z.number().default(0)
+            // navOrder: z.number().default(0)
           })
           .partial()
       )
@@ -50,15 +50,15 @@ export default defineContentConfig({
     project: defineCollection({
       type: 'page',
       source: {
-        include: 'project/**',
-        prefix: '/project'
+        include: 'projects/**',
+        prefix: '/projects'
       },
       schema: baseSchema.merge(
         z
           .object({
             heroImage: z.string(),
             navHidden: z.boolean().default(false),
-            navOrder: z.number().default(0),
+            // navOrder: z.number().default(0),
             gallery: z
               .object({
                 images: z.array(

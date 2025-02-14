@@ -14,7 +14,10 @@ const props = defineProps({
 })
 
 const { data } = await useAsyncData('navbar', () => {
-  return queryCollectionNavigation('page', ['navHidden', 'navOrder'])
+  return queryCollectionNavigation('page', [
+    'navHidden'
+    // 'navOrder'
+  ])
 })
 </script>
 <template>
@@ -79,7 +82,9 @@ const { data } = await useAsyncData('navbar', () => {
             <li
               v-for="item in data
                 ?.filter((i) => !i.navHidden)
-                .sort((a, b) => a.navOrder - b.navOrder)"
+                // .sort((a, b) => a.navOrder - b.navOrder)
+                .toReversed()
+                .toReversed()"
               :key="item.id"
             >
               <NuxtLink :to="item.path" class="text-primary-emphasis-alt">

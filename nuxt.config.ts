@@ -66,17 +66,33 @@ export default defineNuxtConfig({
       ]
     }
   },
+  site: {
+    url: 'eltmnr.com'
+  },
   nitro: {
+    // static: true,
     prerender: {
-      // autoSubfolderIndex: true,
       crawlLinks: true
     }
+    // prerender: {
+    //   routes: [
+    //     '/'
+    //     // '/projects'
+    //   ],
+    //   crawlLinks: true
+    // }
   },
+  // routeRules: {
+  //   '/**': {
+  //     prerender: true
+  //   }
+  // },
   content: {
     preview: { dev: true },
     renderer: { anchorLinks: { h1: true, h2: true, h3: true, h4: true, h5: true, h6: true } }
   },
   modules: [
+    '@nuxtjs/sitemap',
     '@nuxt/content',
     '@primevue/nuxt-module',
     '@nuxt/image',

@@ -7,7 +7,6 @@ import Project1 from '/home/project-1.jpg'
 import Project2 from '/home/project-2.jpg'
 import ProjectLogo1 from '/logos/project-1-light.svg'
 import ProjectLogo2 from '/logos/project-2-light.svg'
-import { tr } from 'motion/react-client'
 
 const route = useRoute()
 

@@ -1,16 +1,20 @@
 <script setup lang="ts">
 import { NuxtImg } from '#components'
-import { pageSchema, type ContentNavigationItem } from '@nuxt/content'
+import { type ContentNavigationItem } from '@nuxt/content'
 import { useElementSize } from '@vueuse/core'
 import { type Menu } from 'primevue'
 
 const route = useRoute()
 
 const { data } = await useAsyncData('navbar-page', () => {
-  return queryCollectionNavigation('page', ['navHidden', 'navOrder'])
+  return queryCollectionNavigation('page', [
+    'navHidden' //'navOrder'
+  ])
 })
 const { data: projectData } = await useAsyncData('navbar-project', () => {
-  return queryCollectionNavigation('project', ['navHidden', 'navOrder'])
+  return queryCollectionNavigation('project', [
+    'navHidden' //'navOrder'
+  ])
 })
 
 const props = defineProps({
@@ -26,57 +30,55 @@ const props = defineProps({
 
 const menu = ref<InstanceType<typeof Menu>>()
 const root = ref<HTMLDivElement | undefined>()
-const items = computed(() => {
-  const page = data.value
-  const project = projectData.value?.at(0)?.children as ContentNavigationItem[] | undefined
-  return [
-    {
-      label: 'Home',
-      url: '/',
-      class: {
-        active: route.path === '/',
-        'p-menu-item-active': true,
-        heading: true
-      }
-    },
-    {
-      label: 'Pages',
-      class: { heading: true },
-      items: [
-        ...(page
-          ?.filter((page) => !page.navHidden)
-          .sort((a, b) => a.navOrder - b.navOrder)
-          .map((page) => ({
-            label: page.title,
-            url: page.path,
-            class: {
-              active: route.path === page.path,
-              'p-menu-item-active': true,
-              submenu: true
-            }
-          })) ?? [])
-      ]
-    },
-    {
-      label: 'Projects',
-      class: { heading: true },
-      items: [
-        ...(project
-          ?.filter((page) => !page.navHidden)
-          .sort((a: any, b: any) => a.navOrder - b.navOrder)
-          .map((page) => ({
-            label: page.title,
-            url: page.path,
-            class: {
-              active: route.path === page.path,
-              'p-menu-item-active': true,
-              submenu: true
-            }
-          })) ?? [])
-      ]
+const page = data.value
+const project = projectData.value?.at(0)?.children as ContentNavigationItem[] | undefined
+const items = ref([
+  {
+    label: 'Home',
+    url: '/',
+    class: {
+      active: route.path === '/',
+      'p-menu-item-active': true,
+      heading: true
     }
-  ]
-})
+  },
+  {
+    label: 'Pages',
+    class: { heading: true },
+    items: [
+      ...(page
+        ?.filter((page) => !page.navHidden)
+        // .sort((a, b) => a.navOrder - b.navOrder)
+        .map((page) => ({
+          label: page.title,
+          url: page.path,
+          class: {
+            active: route.path === page.path,
+            'p-menu-item-active': true,
+            submenu: true
+          }
+        })) ?? [])
+    ]
+  },
+  {
+    label: 'Projects',
+    class: { heading: true },
+    items: [
+      ...(project
+        ?.filter((page) => !page.navHidden)
+        // .sort((a: any, b: any) => a.navOrder - b.navOrder)
+        .map((page) => ({
+          label: page.title,
+          url: page.path,
+          class: {
+            active: route.path === page.path,
+            'p-menu-item-active': true,
+            submenu: true
+          }
+        })) ?? [])
+    ]
+  }
+])
 
 const toggle = (event: MouseEvent) => {
   menu.value?.toggle(event)
