@@ -1,4 +1,8 @@
 <script setup lang="ts">
+import {
+  faHouse
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 const props = defineProps({
   units: {
     type: Array<{ lotNumber: string | undefined; name: string | undefined }>,
@@ -7,25 +11,30 @@ const props = defineProps({
 })
 </script>
 <template>
-  <ScrollPanel class="bg-highlight w-full rounded-lg shadow-lg h-16" :dt="{
-        bar: {
-            background: '{primary.200}'
-        }
-    }">
-    <!-- <div class="flex p-4 gap-4 shrink-0 bg-red-500"> -->
-    <div v-for="unit in units" :key="unit.lotNumber" class="flex flex-col items-start">
-      <span class="text-nowrap text-primary font-bold text-xs">
-        <!-- <i class="pi pi-map-marker text-xs"></i> -->
-        {{ unit.lotNumber }}
-      </span>
-      <span class="text-nowrap text-xs">{{ unit.name }}</span>
+  <div>
+    <h5 class="!mb-2">Legends</h5>
+    <div class="bg-highlight rounded-lg overflow-hidden">
+      <ScrollPanel class="h-16" :dt="{
+            bar: {
+                background: '{primary.200}'
+            }
+        }">
+        <div v-for="unit, index in units" :key="unit.lotNumber" class="flex items-start">
+          <div v-if="index !== 0" class="w-0.5 bg-primary-contrast h-full" />
+          <div class="flex flex-col p-4">
+            <span class="text-nowrap text-primary font-bold text-xs">
+              <FontAwesomeIcon :icon="faHouse" size="xs" /> {{ unit.lotNumber }}
+            </span>
+            <span class="text-nowrap text-sm">{{ unit.name }}</span>
+          </div>
+        </div>
+      </ScrollPanel>
     </div>
-    <!-- </div> -->
-  </ScrollPanel>
+  </div>
 </template>
 
 <style scoped>
 :deep(.p-scrollpanel-content) {
-  @apply flex p-4 pr-8 gap-8 shrink-0;
+  @apply flex shrink-0;
 }
 </style>

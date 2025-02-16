@@ -1,4 +1,18 @@
 <script setup lang="ts">
+import {
+  faBath,
+  faBed,
+  faCarSide,
+  faExpand,
+  faHouse,
+  faTelevision,
+  faTree,
+  faTrowelBricks,
+  faUtensils,
+  faVideo,
+  faWaterLadder
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 const props = defineProps<{
   name: string
   bedroomCount: number
@@ -13,121 +27,94 @@ const props = defineProps<{
 }>()
 </script>
 <template>
-  <div class="flex flex-col p-8 rounded-lg bg-highlight-emphasis">
+  <div class="flex flex-col p-4 md:p-8 rounded-lg bg-highlight shadow-lg">
     <h3>{{ name }}</h3>
+    <h4>Features</h4>
     <div class="rounded-lg overflow-hidden">
       <ScrollPanel
-        class="h-20"
+        class="h-24"
         :dt="{
           bar: {
             background: '{primary.200}'
           }
         }"
       >
-        <div class="feature-items">
-          <span><i class="pi pi-server text-2xl mb-2"></i></span>
+        <div class="feature-item">
+          <i class="feature-icon"><FontAwesomeIcon :icon="faBed" size="2x" /></i>
           <!-- <span>Bedrooms</span> -->
           <span>{{ props.bedroomCount }} bedrooms</span>
         </div>
         <div class="feature-separator" />
-        <div class="feature-items">
-          <span><i class="pi pi-server text-2xl mb-2"></i></span>
+        <div class="feature-item">
+          <i class="feature-icon"><FontAwesomeIcon :icon="faBath" size="2x" /></i>
           <!-- <span>Bathrooms</span> -->
           <span>{{ props.bathroomCount }} bathrooms</span>
         </div>
         <div class="feature-separator" />
-        <div class="feature-items">
-          <span><i class="pi pi-window-maximize text-2xl mb-2"></i></span>
+        <div class="feature-item">
+          <i class="feature-icon"><FontAwesomeIcon :icon="faExpand" size="2x" /></i>
           <span>Plot size</span>
           <span>{{ props.plotSizeSquareWa }} wa²</span>
         </div>
         <div class="feature-separator" />
-        <div class="feature-items">
-          <span><i class="pi pi-warehouse text-2xl mb-2"></i></span>
+        <div class="feature-item">
+          <i class="feature-icon"><FontAwesomeIcon :icon="faHouse" size="2x" /></i>
           <span>Total area</span>
           <span>{{ props.totalAreaSquareMeter }} m²</span>
         </div>
         <div class="feature-separator" />
-        <div class="feature-items">
-          <span><i class="pi pi-align-justify text-2xl mb-2"></i></span>
+        <div class="feature-item">
+          <i class="feature-icon"><FontAwesomeIcon :icon="faWaterLadder" size="2x" /></i>
           <span>Pool size</span>
           <span>{{ props.pool.lengthMeter }} × {{ props.pool.widthMeter }} m</span>
         </div>
         <div class="feature-separator" />
-        <div class="feature-items">
-          <span><i class="pi pi-align-justify text-2xl mb-2"></i></span>
+        <div class="feature-item">
+          <i class="feature-icon"><FontAwesomeIcon :icon="faTrowelBricks" size="2x" /></i>
           <span>Built area</span>
           <span>{{ props.builtUpAreaSquareMeter }} m²</span>
         </div>
         <div class="feature-separator" />
-        <div class="feature-items">
-          <span><i class="pi pi-car text-2xl mb-2"></i></span>
-          <span>{{ props.parkingCount }} Parking</span>
+        <div class="feature-item">
+          <i class="feature-icon"><FontAwesomeIcon :icon="faCarSide" size="2x" /></i>
+          <span>Parking</span>
+          <span>{{ props.parkingCount }} Spaces</span>
         </div>
         <div v-if="props.features.includes('garden')" class="feature-separator" />
-        <div v-if="props.features.includes('garden')" class="feature-items">
-          <span><i class="pi pi-car text-2xl mb-2"></i></span>
+        <div v-if="props.features.includes('garden')" class="feature-item">
+          <i class="feature-icon"><FontAwesomeIcon :icon="faTree" size="2x" /></i>
           <span>Garden</span>
         </div>
         <div v-if="props.features.includes('cctv')" class="feature-separator" />
-        <div v-if="props.features.includes('cctv')" class="feature-items">
-          <span><i class="pi pi-video text-2xl mb-2"></i></span>
+        <div v-if="props.features.includes('cctv')" class="feature-item">
+          <i class="feature-icon"><FontAwesomeIcon :icon="faVideo" size="2x" /></i>
           <span>CCTV</span>
         </div>
         <div v-if="props.features.includes('diningRoom')" class="feature-separator" />
-        <div v-if="props.features.includes('diningRoom')" class="feature-items">
-          <span><i class="pi pi-car text-2xl mb-2"></i></span>
+        <div v-if="props.features.includes('diningRoom')" class="feature-item">
+          <i class="feature-icon"><FontAwesomeIcon :icon="faTelevision" size="2x" /></i>
           <span>Living Room</span>
         </div>
         <div v-if="props.features.includes('livingRoom')" class="feature-separator" />
-        <div v-if="props.features.includes('livingRoom')" class="feature-items">
-          <span><i class="pi pi-car text-2xl mb-2"></i></span>
+        <div v-if="props.features.includes('livingRoom')" class="feature-item">
+          <i class="feature-icon"><FontAwesomeIcon :icon="faUtensils" size="2x" /></i>
           <span>Dining Room</span>
         </div>
       </ScrollPanel>
     </div>
-    <div class="flex flex-col gap-4 mt-4">
-      <div class="flex flex-col gap-2">
-        <span class="text-primary font-bold">Bedrooms</span>
-        <span>{{ bedroomCount }}</span>
-      </div>
-      <div class="flex flex-col gap-2">
-        <span class="text-primary font-bold">Bathrooms</span>
-        <span>{{ bathroomCount }}</span>
-      </div>
-      <div class="flex flex-col gap-2">
-        <span class="text-primary font-bold">Plot Size</span>
-        <span>{{ plotSizeSquareWa }} Sq.Wa</span>
-      </div>
-      <div class="flex flex-col gap-2">
-        <span class="text-primary font-bold">Total Area</span>
-        <span>{{ totalAreaSquareMeter }} Sq.M</span>
-      </div>
-      <div class="flex flex-col gap-2">
-        <span class="text-primary font-bold">Built-up Area</span>
-        <span>{{ builtUpAreaSquareMeter }} Sq.M</span>
-      </div>
-      <div class="flex flex-col gap-2">
-        <span class="text-primary font-bold">Parking</span>
-        <span>{{ parkingCount }}</span>
-      </div>
-      <div class="flex flex-col gap-2">
-        <span class="text-primary font-bold">Features</span>
-        <div class="flex gap-2">
-          <span
-            v-for="feature in features"
-            :key="feature"
-            class="text-xs text-primary bg-primary-200 rounded-full px-2"
-          >
-            {{ feature }}
-          </span>
-        </div>
-      </div>
-      <div class="flex flex-col gap-2">
-        <span class="text-primary font-bold">Pool</span>
-        <span>{{ pool.lengthMeter }}m x {{ pool.widthMeter }}m</span>
-      </div>
-    </div>
+    <h4 class="mt-8">Floor plans</h4>
+    <Galleria :value="floorPlans.map(f => ({ itemImageSrc: f.imageSrc, alt: f.label }))" :numVisible="5" class="w-full" :showThumbnails="false"
+          :showIndicators="true" :changeItemOnIndicatorHover="true" indicatorsPosition="top">
+          <template #item="slotProps">
+              <img class="!rounded-none" :src="slotProps.item.itemImageSrc" :alt="slotProps.item.alt" style="width: 100%; display: block" />
+          </template>
+          <template #indicator="{ activeIndex, index }">
+              <span class="cursor-pointer" :class="{'text-muted-color': index !== activeIndex, 'font-bold': index === activeIndex}">{{ floorPlans[index]?.label }}</span>
+          </template>
+      </Galleria>
+    <!-- <div v-for="floorPlan in floorPlans" :key="floorPlan.label" class="mt-8">
+      <h4>{{ floorPlan.label }}</h4>
+    </div><Image class="w-full" :src="floorPlan.imageSrc" :alt="floorPlan.label" preview /> -->
   </div>
 </template>
 
@@ -137,11 +124,19 @@ const props = defineProps<{
   @apply flex bg-primary-contrast text-primary uppercase text-xs text-center font-bold justify-evenly items-stretch;
 }
 
-.feature-items {
+:deep(.p-galleria-indicator-list) {
+  @apply bg-primary-contrast gap-8 uppercase text-sm text-primary text-center;
+}
+
+.feature-item {
   @apply flex flex-col items-center p-5 shrink-0 justify-center bg-primary-contrast;
 }
 
 .feature-separator {
   @apply w-0.5 bg-highlight-emphasis rounded-full shrink-0;
+}
+
+.feature-icon {
+  @apply mb-2;
 }
 </style>
