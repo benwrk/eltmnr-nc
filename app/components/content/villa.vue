@@ -103,24 +103,36 @@ const props = defineProps<{
       </ScrollPanel>
     </div>
     <h4 class="mt-8">Floor plans</h4>
-    <Galleria :value="floorPlans.map(f => ({ itemImageSrc: f.imageSrc, alt: f.label }))" :numVisible="5" class="w-full" :showThumbnails="false"
-          :showIndicators="true" :changeItemOnIndicatorHover="true" indicatorsPosition="top">
-          <template #item="slotProps">
-              <img class="!rounded-none" :src="slotProps.item.itemImageSrc" :alt="slotProps.item.alt" style="width: 100%; display: block" />
-          </template>
-          <template #indicator="{ activeIndex, index }">
-              <span class="cursor-pointer" :class="{'text-muted-color': index !== activeIndex, 'font-bold': index === activeIndex}">{{ floorPlans[index]?.label }}</span>
-          </template>
-      </Galleria>
-    <!-- <div v-for="floorPlan in floorPlans" :key="floorPlan.label" class="mt-8">
-      <h4>{{ floorPlan.label }}</h4>
-    </div><Image class="w-full" :src="floorPlan.imageSrc" :alt="floorPlan.label" preview /> -->
+    <Galleria
+      :value="floorPlans.map((f) => ({ itemImageSrc: f.imageSrc, alt: f.label }))"
+      :numVisible="5"
+      class="w-full"
+      :showThumbnails="false"
+      :showIndicators="true"
+      :changeItemOnIndicatorHover="true"
+      indicatorsPosition="top"
+    >
+      <template #item="slotProps">
+        <img
+          class="!rounded-none"
+          :src="slotProps.item.itemImageSrc"
+          :alt="slotProps.item.alt"
+          style="width: 100%; display: block"
+        />
+      </template>
+      <template #indicator="{ activeIndex, index }">
+        <span
+          class="cursor-pointer"
+          :class="{ 'text-muted-color': index !== activeIndex, 'font-bold': index === activeIndex }"
+          >{{ floorPlans[index]?.label }}</span
+        >
+      </template>
+    </Galleria>
   </div>
 </template>
 
 <style scoped>
 :deep(.p-scrollpanel-content) {
-  /* @apply flex p-4 pr-8 gap-8 shrink-0; */
   @apply flex bg-primary-contrast text-primary uppercase text-xs text-center font-bold justify-evenly items-stretch;
 }
 

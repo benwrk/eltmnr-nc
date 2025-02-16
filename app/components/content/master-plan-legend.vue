@@ -1,11 +1,9 @@
 <script setup lang="ts">
-import {
-  faHouse
-} from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { faHouse } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 const props = defineProps({
   units: {
-    type: Array<{ lotNumber: string | undefined; name: string | undefined }>,
+    type: Array<{ lotNumber: string; name: string }>,
     required: true
   }
 })
@@ -14,12 +12,15 @@ const props = defineProps({
   <div>
     <h5 class="!mb-2">Legends</h5>
     <div class="bg-highlight rounded-lg overflow-hidden">
-      <ScrollPanel class="h-16" :dt="{
-            bar: {
-                background: '{primary.200}'
-            }
-        }">
-        <div v-for="unit, index in units" :key="unit.lotNumber" class="flex items-start">
+      <ScrollPanel
+        class="h-16"
+        :dt="{
+          bar: {
+            background: '{primary.200}'
+          }
+        }"
+      >
+        <div v-for="(unit, index) in units" :key="unit.lotNumber" class="flex items-start">
           <div v-if="index !== 0" class="w-0.5 bg-primary-contrast h-full" />
           <div class="flex flex-col p-4">
             <span class="text-nowrap text-primary font-bold text-xs">
