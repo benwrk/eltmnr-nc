@@ -93,7 +93,6 @@ onMounted(() => {
     >
       <i class="pi pi-youtube text-6xl"></i>
       <i class="pi pi-spinner animate-spin text-2xl"></i>
-      <!-- <span class="basis-full text-center">Video Loading...</span> -->
     </div>
   </div>
 </template>

@@ -3,9 +3,9 @@ import { animate, inView } from 'motion'
 import type Footer from './components/Footer.vue'
 
 const footer = ref<InstanceType<typeof Footer>>()
-// const navbar = ref<InstanceType<typeof Navbar>>()
+const navbar = ref<InstanceType<typeof Navbar>>()
 const { height: footerHeight } = useElementSize(footer)
-// const { height: navbarHeight } = useElementSize(navbar)
+const { height: navbarHeight } = useElementSize(navbar)
 const { height: windowHeight } = useWindowSize()
 
 onMounted(() => {
@@ -26,7 +26,9 @@ onMounted(() => {
     {{ footerHeight }} -->
     <!-- {{ windowHeight }} {{ footerHeight }} -->
     <Navbar ref="navbar" id="navbar" />
-    <NuxtPage :style="{ minHeight: `${windowHeight - footerHeight}px` }" />
+    <slot name="page" :windowHeight :footerHeight :navbarHeight>
+      <NuxtPage :style="{ minHeight: `${windowHeight - footerHeight}px` }" />
+    </slot>
     <Footer ref="footer" />
   </NuxtLayout>
 </template>

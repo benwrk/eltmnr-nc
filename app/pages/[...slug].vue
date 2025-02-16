@@ -1,6 +1,5 @@
 <script setup lang="ts">
 const route = useRoute()
-console.log(route.path)
 
 const { data: page } = await useAsyncData('page-' + route.path, () => {
   return queryCollection('page').path(route.path).first()
@@ -24,7 +23,7 @@ if (!page.value) {
       alt="Hero Image"
       class="w-full h-[80vh] object-cover"
     />
-    <div class="container mx-auto py-16 px-4">
+    <div id="main" class="container mx-auto py-16 px-4 fade-in">
       <ContentRenderer class="content fade-in" v-if="page" :value="page" />
     </div>
   </div>

@@ -24,7 +24,7 @@ if (!page.value) {
       alt="Hero Image"
       class="w-full h-[80vh] object-cover"
     />
-    <div class="container mx-auto py-16 px-4">
+    <div id="main" class="container mx-auto py-16 px-4">
       <Image
         v-if="page?.logo"
         :src="page.logo"

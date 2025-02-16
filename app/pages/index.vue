@@ -169,6 +169,8 @@ onMounted(() => {
               walks of life.
             </p>
             <Button
+              as="router-link"
+              to="/register#main"
               label="Register Now"
               icon="pi pi-arrow-right"
               iconPos="right"
@@ -207,6 +209,8 @@ onMounted(() => {
                 smart-home designs.
               </p>
               <Button
+                as="router-link"
+                to="/about#main"
                 label="Learn More"
                 icon="pi pi-arrow-right"
                 iconPos="right"
@@ -234,6 +238,8 @@ onMounted(() => {
                     residences in Phuket
                   </p>
                   <Button
+                    as="router-link"
+                    to="/projects/lavish-estates"
                     label="Learn More"
                     icon="pi pi-arrow-right"
                     iconPos="right"
