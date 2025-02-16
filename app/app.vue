@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { animate, inView } from 'motion'
 import type Footer from './components/Footer.vue'
+import type Navbar from './components/Navbar.vue'
 
 const footer = ref<InstanceType<typeof Footer>>()
 const navbar = ref<InstanceType<typeof Navbar>>()
