@@ -93,9 +93,9 @@ const { data } = await useAsyncData('navbar', () => {
             </li>
           </ul>
         </div>
-        <div class="flex flex-col fade-in">
+        <!-- <div class="flex flex-col fade-in">
           <h5>Projects</h5>
-        </div>
+        </div> -->
         <div class="flex flex-col fade-in">
           <h5>Elite Manor Co., Ltd.</h5>
           5/203 Moo 4, Cherngtalay,<br />
