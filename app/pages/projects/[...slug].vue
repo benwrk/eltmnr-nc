@@ -25,6 +25,13 @@ if (!page.value) {
       class="w-full h-[80vh] object-cover"
     />
     <div class="container mx-auto py-16 px-4">
+      <Image
+        v-if="page?.logo"
+        :src="page.logo"
+        :alt="`${page.title} Logo`"
+        class="logo h-36 mb-8"
+        preview
+      />
       <ContentRenderer class="content fade-in" v-if="page" :value="page" />
     </div>
   </div>
@@ -40,6 +47,16 @@ if (!page.value) {
   h6,
   p {
     @apply mb-4;
+  }
+  img {
+    @apply w-full rounded-lg;
+    /* @apply max-w-[64rem]; */
+  }
+}
+
+:deep(.logo) {
+  img {
+    @apply object-contain;
   }
 }
 </style>

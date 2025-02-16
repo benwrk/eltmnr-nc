@@ -58,6 +58,7 @@ export default defineContentConfig({
           .object({
             heroImage: z.string(),
             navHidden: z.boolean().default(false),
+            logo: z.string(),
             // navOrder: z.number().default(0),
             gallery: z
               .object({
