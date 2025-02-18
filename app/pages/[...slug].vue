@@ -40,5 +40,11 @@ if (!page.value) {
   p {
     @apply mb-4;
   }
+/*
+  h1, h2, h3, h4, h5, h6 {
+    :after {
+      content: attr();
+    }
+  } */
 }
 </style>

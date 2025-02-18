@@ -4,7 +4,15 @@ import { colors } from './colors.config'
 
 export const customPreset = definePreset(Lara, {
   primitive: {
-    copper: colors.copper
+    copper: colors.copper,
+    borderRadius: {
+      none: '0',
+      xs: '0',
+      sm: '0',
+      md: '0',
+      lg: '0',
+      xl: '0'
+    }
   },
   semantic: {
     primary: {

@@ -34,11 +34,14 @@ onMounted(() => {
   </NuxtLayout>
 </template>
 
-<style scoped>
+<style>
 /* div {
   @apply animate-fadeindown animate-enter animate-ease-in-out animate-duration-500;
 } */
 /* :deep(.p-button:not(:disabled)) {
   @apply hover:scale-125 transition-all ease-in duration-300;
 } */
+[class*='rounded-'] {
+  @apply !rounded-none;
+}
 </style>

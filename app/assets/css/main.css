@@ -45,6 +45,10 @@
       @apply text-base;
     }
 
+    a:not(.p-button) {
+      @apply text-primary hover:underline;
+    }
+
     .p-image-original {
       @apply w-full h-full !max-w-[calc(100vw-4rem)] !max-h-[calc(100vh-4rem)] object-cover rounded-xl shadow-lg;
     }
