@@ -43,9 +43,9 @@ export default defineNuxtConfig({
         { name: 'apple-mobile-web-app-title', content: 'Elite Manor' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' }
       ],
-      htmlAttrs: {
-        class: 'dark-theme'
-      },
+      // htmlAttrs: {
+      //   class: 'dark-theme'
+      // },
       link: [
         {
           rel: 'icon',
