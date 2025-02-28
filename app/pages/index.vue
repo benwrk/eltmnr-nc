@@ -129,11 +129,11 @@ onMounted(() => {
         >
           <div class="flex items-center flex-wrap md:flex-nowrap gap-y-12">
             <div class="basis-full md:basis-2/5 p-12">
-              <header class="md:text-right fade-in">
-                <h1 class="text-5xl md:text-9xl">
-                  Elite<br />
-                  Manor
-                </h1>
+              <header class="text-right fade-in">
+                <span class="text-8xl text-primary font-display md:text-9xl uppercase">
+                  Elite
+                </span><br />
+                <span class="text-5xl font-display md:text-6xl uppercase font-normal"> Manor </span>
               </header>
             </div>
             <div
@@ -149,12 +149,15 @@ onMounted(() => {
               preview
             />
             <div class="basis-full md:basis-2/5 p-12">
-              <header class="text-right md:text-left flex flex-col gap-y-4">
-                <h1 class="text-5xl text-muted-color-emphasis font-normal fade-in">
-                  Innovate Living
-                </h1>
-                <h1 class="text-5xl text-muted-color font-normal fade-in">Classic Luxury</h1>
+              <header class=" flex flex-col gap-y-4">
+                <span class="font-display text-5xl text-muted-color-emphasis font-normal fade-in uppercase">
+                  The<br />Innovate<br />Living
+                </span>
               </header>
+            </div>
+            <div class="basis-full flex md:justify-center items-baseline flex-wrap p-12 mb-12">
+              <span class="font-display text-5xl md:text-6xl uppercase">Classic</span>
+              <span class="font-display text-primary text-7xl md:text-9xl md:ml-4 uppercase">Luxury</span>
             </div>
           </div>
           <div class="flex flex-col items-start container mx-auto px-4">
@@ -279,7 +282,11 @@ onMounted(() => {
                 <p class="fade-in text-center md:text-start">
                   We are working on something amazing. Stay tuned for updates!
                 </p>
-                <Button label="Coming Soon" class="self-center md:self-start fade-in" disabled></Button>
+                <Button
+                  label="Coming Soon"
+                  class="self-center md:self-start fade-in"
+                  disabled
+                ></Button>
               </div>
             </div>
             <!-- </div> -->

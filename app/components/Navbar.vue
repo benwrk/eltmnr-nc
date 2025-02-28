@@ -42,7 +42,8 @@ const items = ref([
     class: {
       active: route.path === '/',
       'p-menu-item-active': true,
-      heading: true
+      heading: true,
+      // 'fade-in': true
     }
   },
   {
@@ -58,7 +59,8 @@ const items = ref([
           class: {
             active: route.path === page.path,
             'p-menu-item-active': true,
-            submenu: true
+            submenu: true,
+            // 'fade-in': true
           }
         })) ?? [])
     ]
@@ -76,7 +78,8 @@ const items = ref([
           class: {
             active: route.path === page.path,
             'p-menu-item-active': true,
-            submenu: true
+            submenu: true,
+            // 'fade-in': true
           }
         })) ?? [])
     ]
@@ -109,14 +112,14 @@ function toggleTheme() {
     <div class="container mx-auto my-4 flex flex-col items-center"">
       <Toolbar
         id=" navbar"
-      class=" w-[102.5%] max-w-[calc(100vw-2rem)] bg-surface-50 group-[.at-top]:bg-surface-800 dark:bg-surface-800 bg-opacity-65 dark:bg-opacity-65 shadow-[0_0_50px_-10px_rgba(0,0,0,0.4)] backdrop-blur-md border border-white/20 flex items-center justify-between rounded-lg p-2 transition-all duration-700">
+      class="w-[102.5%] max-w-[calc(100vw-2rem)] bg-surface-50 group-[.at-top]:bg-surface-800 dark:bg-surface-800 !bg-opacity-65 shadow-[0_0_50px_-10px_rgba(0,0,0,0.4)] backdrop-blur-md border border-white/20 flex items-center justify-between rounded-lg p-2 transition-all duration-700">
       <template #center>
         <div class="basis-1/4 flex justify-start">
           <Button variant="text" type="button" icon="pi pi-bars" size="large" @click="toggle" aria-haspopup="true"
             aria-controls="overlay_menu" rounded />
           <!-- Manually control position due to PrimeVue's menu toggle positioning bug for fixed parent element. -->
           <Menu
-            class="!top-28 !left-0 bg-surface-50 group-[.at-top]:bg-surface-800 bg-opacity-65 dark:bg-opacity-65 shadow-[0_0_50px_-10px_rgba(0,0,0,0.4)] backdrop-blur-md border border-white/20"
+            class="!top-28 !left-0 bg-surface-50 group-[.at-top]:bg-surface-800 !bg-opacity-65 shadow-[0_0_50px_-10px_rgba(0,0,0,0.4)] backdrop-blur-md border border-white/20"
             ref="menu" id="overlay_menu" :model="items" :popup="true" append-to="#menu-container" />
         </div>
         <div class="basis-2/4 flex justify-center">
@@ -163,15 +166,24 @@ function toggleTheme() {
   @apply text-primary;
 }
 
+.at-top {
+  :deep(.active) {
+    .p-menu-item-label {
+      @apply !text-primary-emphasis;
+    }
+  }
+}
+
 :deep(.active) {
   .p-menu-item-label {
-    @apply text-primary;
+    @apply !text-primary;
     @apply font-bold;
   }
+}
 
-  /* .p-menu-item-background {
-    @apply bg-surface-800;
-    } */
+:deep(.p-menu-item-content:hover) {
+  @apply bg-highlight;
+  @apply group-[.at-top]:bg-surface-800;
 }
 
 :deep(.p-menu-item-label),
