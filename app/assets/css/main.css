@@ -24,6 +24,7 @@
       font-family: 'Red Hat Display';
       @apply font-bold;
       @apply text-primary;
+      /* @apply text-center; */
     }
 
     h1 {
@@ -45,12 +46,15 @@
       @apply text-base;
     }
 
-    a:not(.p-button) {
-      @apply text-primary hover:underline;
+    :not(h1, h2, h3, h4, h5, h6) { /* Apply to all elements except headings */
+      > a:not(.p-button) {
+        @apply text-primary hover:underline;
+      }
     }
 
     .p-image-original {
-      @apply w-full h-full !max-w-[calc(100vw-4rem)] !max-h-[calc(100vh-4rem)] object-cover rounded-xl shadow-lg;
+      @apply w-full h-full !max-w-[calc(100vw-4rem)] !max-h-[calc(100vh-4rem)] object-cover shadow-lg;
+      /* @apply rounded-xl; */
     }
 
     .p-image {
@@ -58,6 +62,10 @@
       img {
         @apply w-full h-full max-w-full max-h-full object-cover;
       }
+    }
+
+    [class*='rounded-'] {
+      @apply !rounded-none;
     }
 
     /* .genie {

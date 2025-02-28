@@ -41,7 +41,4 @@ onMounted(() => {
 /* :deep(.p-button:not(:disabled)) {
   @apply hover:scale-125 transition-all ease-in duration-300;
 } */
-[class*='rounded-'] {
-  @apply !rounded-none;
-}
 </style>

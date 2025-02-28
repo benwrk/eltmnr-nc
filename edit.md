@@ -1,0 +1,28 @@
+# รายการแก้ไข
+- [ ] Navbar ตอนแรกสีดำ เลื่อนลงเป็นสีขาว
+- [ ] Navbar ลดขนาดลงเมื่อเลื่อนลง
+- [x] เอา Night Mode ออก
+- [ ] Home Page Project Section เป็นสีเข้ม เพิ่มขนาดโลโก้ 1.5x ปรับเป็น center ใน mobile
+- [ ] เปลี่ยนรูป Hero Image เป็น _164.jpg
+- [ ] ปรับ Header ใน Mobile ให้ไม่เป็น Square (See Casa Angelina)
+- [ ] ปรับ lead text ให้ชิดซ่้าย แต่อยู่ครึ่งขวาของจอ
+- [ ] เพิ่มรางวัล ลดขนาด
+- [ ] ปรับพื้นหลัง FAQ เป็นสี bg-highlight
+- [ ] ปรับสี sections เป็น alternating colors
+- [ ] ย้าย CTA ต่าง ๆ ใน Footer ไปไว้ขวา
+- [ ] เอา Projects ใน Footer กลับมา
+- [ ] ย้าย All rights reserved ไปไว้กลาง
+- [ ] หน้า Register เปลี่ยนรูปเป็น _233.jpg
+- [ ] หน้า About เปลี่ยนรูปเป็น _381.jpg
+- [ ] หน้า Our Team เปลี่ยน Partner เป็น 2 คอลัมน์ เอากรอบออก
+- [ ] เปลี่ยนรูป Estate Management เป็นรูปคู่แม่บ้าน
+- [ ] เปลี่ยนรูป Contact Us เป็น _359.jpg
+- [ ] เพิ่มสถานะ Sold ใน Map Legend (เปลี่ยนสี bg เพิ่มคำว่า sold)
+- [ ] เปลี่ยนรูป Lavish Estates เป็น _137.jpg
+- [ ] Menu Animation
+- [ ] ปรับ Layout ของ Villa เป็น Two columns
+- [ ] เปลี่ยนรูป Cornwell เป็น _235.jpg
+- [ ] Layout ใหม่ของ Header
+- [ ] Cornwell Description
+- [ ] Blog
+- [ ] Project Gallery
