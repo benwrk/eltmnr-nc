@@ -130,9 +130,8 @@ onMounted(() => {
           <div class="flex items-center flex-wrap md:flex-nowrap gap-y-12">
             <div class="basis-full md:basis-2/5 p-12">
               <header class="text-right fade-in">
-                <span class="text-8xl text-primary font-display md:text-9xl uppercase">
-                  Elite
-                </span><br />
+                <span class="text-8xl text-primary font-display md:text-9xl uppercase"> Elite </span
+                ><br />
                 <span class="text-5xl font-display md:text-6xl uppercase font-normal"> Manor </span>
               </header>
             </div>
@@ -149,15 +148,19 @@ onMounted(() => {
               preview
             />
             <div class="basis-full md:basis-2/5 p-12">
-              <header class=" flex flex-col gap-y-4">
-                <span class="font-display text-5xl text-muted-color-emphasis font-normal fade-in uppercase">
+              <header class="flex flex-col gap-y-4">
+                <span
+                  class="font-display text-5xl text-muted-color-emphasis font-normal fade-in uppercase"
+                >
                   The<br />Innovate<br />Living
                 </span>
               </header>
             </div>
             <div class="basis-full flex md:justify-center items-baseline flex-wrap p-12 mb-12">
               <span class="font-display text-5xl md:text-6xl uppercase">Classic</span>
-              <span class="font-display text-primary text-7xl md:text-9xl md:ml-4 uppercase">Luxury</span>
+              <span class="font-display text-primary text-7xl md:text-9xl md:ml-4 uppercase"
+                >Luxury</span
+              >
             </div>
           </div>
           <div class="flex flex-col items-start container mx-auto px-4">
@@ -361,18 +364,23 @@ main {
 }
 
 :deep(.p-accordionpanel) {
-  &:not(.p-accordionpanel-active) {
+  /* &:not(.p-accordionpanel-active) {
     .p-accordionheader {
       @apply border-0;
     }
-  }
-  &.p-accordionpanel-active {
+  } */
+  /* &.p-accordionpanel-active {
     .p-accordionheader {
-      @apply border-b-0;
+      @apply !border-b-0;
+      @apply border-[1px];
     }
-  }
+  } */
   .p-accordionheader {
     @apply bg-primary-contrast mt-2;
+    @apply border-0;
+  }
+  .p-accordioncontent-content {
+    @apply border-0;
   }
 }
 </style>
