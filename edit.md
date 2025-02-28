@@ -14,7 +14,7 @@
 - [x] ย้าย All rights reserved ไปไว้กลาง
 - [x] หน้า Register เปลี่ยนรูปเป็น _233.jpg
 - [x] หน้า About เปลี่ยนรูปเป็น _381.jpg
-- [ ] หน้า Our Team เปลี่ยน Partner เป็น 2 คอลัมน์ เอากรอบออก
+- [x] หน้า Our Team เปลี่ยน Partner เป็น 2 คอลัมน์ เอากรอบออก
 - [x] เปลี่ยนรูป Estate Management เป็นรูปคู่แม่บ้าน
 - [x] เปลี่ยนรูป Contact Us เป็น _359.jpg
 - [x] เพิ่มสถานะ Sold ใน Map Legend (เปลี่ยนสี bg เพิ่มคำว่า sold)

@@ -11,8 +11,8 @@ import {
   faUtensils,
   faVideo,
   faWaterLadder
-} from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+} from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 const props = defineProps<{
   name: string
   bedroomCount: number
@@ -27,9 +27,9 @@ const props = defineProps<{
 }>()
 </script>
 <template>
-  <div class="flex flex-col p-4 md:p-8 rounded-lg bg-highlight shadow-lg">
+  <div class="flex flex-col">
     <h3>{{ name }}</h3>
-    <h4>Features</h4>
+    <!-- <h4>Features</h4> -->
     <div class="rounded-lg overflow-hidden">
       <ScrollPanel
         class="h-24"
@@ -102,7 +102,7 @@ const props = defineProps<{
         </div>
       </ScrollPanel>
     </div>
-    <h4 class="mt-8">Floor plans</h4>
+    <!-- <h4 class="mt-8">Floor plans</h4> -->
     <Galleria
       :value="floorPlans.map((f) => ({ itemImageSrc: f.imageSrc, alt: f.label }))"
       :numVisible="5"
@@ -114,7 +114,7 @@ const props = defineProps<{
     >
       <template #item="slotProps">
         <img
-          class="!rounded-none"
+          class="!rounded-none max-h-[36rem] object-contain p-4 bg-highlight"
           :src="slotProps.item.itemImageSrc"
           :alt="slotProps.item.alt"
           style="width: 100%; display: block"
@@ -132,16 +132,16 @@ const props = defineProps<{
 </template>
 
 <style scoped>
-:deep(.p-scrollpanel-content) {
-  @apply flex bg-primary-contrast text-primary uppercase text-xs text-center font-bold justify-evenly items-stretch;
+:deep(.p-galleria-indicator-list) {
+  @apply bg-highlight-emphasis gap-8 uppercase text-sm text-primary text-center;
 }
 
-:deep(.p-galleria-indicator-list) {
-  @apply bg-primary-contrast gap-8 uppercase text-sm text-primary text-center;
+:deep(.p-scrollpanel-content) {
+  @apply flex bg-highlight text-primary uppercase text-xs text-center font-bold justify-evenly items-stretch;
 }
 
 .feature-item {
-  @apply flex flex-col items-center p-5 shrink-0 justify-center bg-primary-contrast;
+  @apply flex flex-col items-center p-5 shrink-0 justify-center;
 }
 
 .feature-separator {
