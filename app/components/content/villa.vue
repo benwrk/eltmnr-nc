@@ -30,15 +30,40 @@ const props = defineProps<{
   <div class="flex flex-col">
     <h3>{{ name }}</h3>
     <!-- <h4>Features</h4> -->
-    <div class="rounded-lg overflow-hidden">
-      <ScrollPanel
+    <Galleria
+      :value="floorPlans.map((f) => ({ itemImageSrc: f.imageSrc, alt: f.label }))"
+      :numVisible="5"
+      class="w-full"
+      :showThumbnails="false"
+      :showIndicators="true"
+      :changeItemOnIndicatorHover="true"
+      indicatorsPosition="bottom"
+    >
+      <template #item="slotProps">
+        <img
+          class="!rounded-none max-h-[36rem] object-contain p-4"
+          :src="slotProps.item.itemImageSrc"
+          :alt="slotProps.item.alt"
+          style="width: 100%; display: block"
+        />
+      </template>
+      <template #indicator="{ activeIndex, index }">
+        <span
+          class="cursor-pointer"
+          :class="{ 'text-muted-color': index !== activeIndex, 'font-bold': index === activeIndex }"
+          >{{ floorPlans[index]?.label }}</span
+        >
+      </template>
+    </Galleria>
+    <div class="rounded-lg flex flex-wrap bg-highlight justify-evenly">
+      <!-- <ScrollPanel
         class="h-24"
         :dt="{
           bar: {
             background: '{primary.200}'
           }
         }"
-      >
+      > -->
         <div class="feature-item">
           <i class="feature-icon"><FontAwesomeIcon :icon="faBed" size="2x" /></i>
           <!-- <span>Bedrooms</span> -->
@@ -100,34 +125,10 @@ const props = defineProps<{
           <i class="feature-icon"><FontAwesomeIcon :icon="faUtensils" size="2x" /></i>
           <span>Dining Room</span>
         </div>
-      </ScrollPanel>
+      <!-- </ScrollPanel> -->
+
     </div>
     <!-- <h4 class="mt-8">Floor plans</h4> -->
-    <Galleria
-      :value="floorPlans.map((f) => ({ itemImageSrc: f.imageSrc, alt: f.label }))"
-      :numVisible="5"
-      class="w-full"
-      :showThumbnails="false"
-      :showIndicators="true"
-      :changeItemOnIndicatorHover="true"
-      indicatorsPosition="top"
-    >
-      <template #item="slotProps">
-        <img
-          class="!rounded-none max-h-[36rem] object-contain p-4 bg-highlight"
-          :src="slotProps.item.itemImageSrc"
-          :alt="slotProps.item.alt"
-          style="width: 100%; display: block"
-        />
-      </template>
-      <template #indicator="{ activeIndex, index }">
-        <span
-          class="cursor-pointer"
-          :class="{ 'text-muted-color': index !== activeIndex, 'font-bold': index === activeIndex }"
-          >{{ floorPlans[index]?.label }}</span
-        >
-      </template>
-    </Galleria>
   </div>
 </template>
 
@@ -145,7 +146,7 @@ const props = defineProps<{
 }
 
 .feature-separator {
-  @apply w-0.5 bg-highlight-emphasis rounded-full shrink-0;
+  @apply w-0.5 bg-highlight-emphasis rounded-full shrink-0 hidden;
 }
 
 .feature-icon {

@@ -104,6 +104,29 @@ watch(windowScroll.isScrolling, function stickyScroll() {
 onMounted(() => {
   navbarHeight = useElementSize(document.getElementById('navbar')).height
 })
+
+const responsiveOptions = [
+  {
+    breakpoint: '1400px',
+    numVisible: 5,
+    numScroll: 1
+  },
+  {
+    breakpoint: '1199px',
+    numVisible: 3,
+    numScroll: 1
+  },
+  {
+    breakpoint: '767px',
+    numVisible: 1,
+    numScroll: 1
+  },
+  {
+    breakpoint: '575px',
+    numVisible: 1,
+    numScroll: 1
+  }
+]
 </script>
 
 <template>
@@ -126,9 +149,9 @@ onMounted(() => {
           :style="{
             paddingTop: `${navbarHeight}px`
           }"
-          class="flex flex-col gap-y-12 md:gap-y-24 md:my-32"
+          class="flex flex-col gap-y-0 md:gap-y-24 md:my-32"
         >
-          <div class="flex items-center flex-wrap md:flex-nowrap gap-y-12">
+          <div class="flex items-center flex-wrap md:flex-nowrap gap-y-0 md:gap-y-12">
             <div class="basis-full md:basis-2/5 p-12">
               <header class="text-right fade-in">
                 <span class="text-8xl text-primary font-display md:text-9xl uppercase"> Elite </span
@@ -141,7 +164,7 @@ onMounted(() => {
               class="basis-4/5 md:basis-3/5 aspect-video max-h-96 ms-auto -order-1 md:-order-none"
             ></div>
           </div>
-          <div class="flex items-center flex-wrap gap-y-12">
+          <div class="flex items-center flex-wrap gap-y-0 md:gap-y-12">
             <Image
               :src="HeroImage"
               alt="Hero Image"
@@ -157,10 +180,10 @@ onMounted(() => {
                 </span>
               </header>
             </div>
-            <div class="basis-full flex md:justify-center items-baseline flex-wrap p-12 mb-12">
-              <span class="font-display text-5xl md:text-6xl uppercase">Classic</span>
+            <div class="basis-full flex justify-center md:justify-center items-baseline flex-wrap p-4 md:p-12 mb-12">
+              <span class="font-display text-5xl md:text-6xl uppercase">Classic </span>
               <span class="font-display text-primary text-7xl md:text-9xl md:ml-4 uppercase"
-                >Luxury</span
+                > Luxury</span
               >
             </div>
           </div>
@@ -322,7 +345,7 @@ onMounted(() => {
             </Accordion>
           </div>
         </section>
-        <section class="flex container mx-auto justify-center px-4">
+        <!-- <section class="flex container mx-auto justify-center px-4">
           <div class="p-4 fade-in flex justify-center md:justify-between pt-4 pb-12 w-full">
             <div class="shrink fade-in hidden lg:flex flex-col items-center">
               <WorldClock class="scale-[.6] -my-8 -mx-8" timezone="Europe/London" />
@@ -345,6 +368,34 @@ onMounted(() => {
               Seoul
             </div>
           </div>
+        </section> -->
+        <section class="fade-in">
+          <Carousel
+            class="container mx-auto"
+            :value="[
+              { label: 'London', timezone: 'Europe/London', scale: 0.6 },
+              { label: 'Paris', timezone: 'Europe/Paris', scale: 0.6 },
+              { label: 'Phuket', timezone: 'Asia/Bangkok', scale: 0.75 },
+              { label: 'Los Angeles', timezone: 'America/Los_Angeles', scale: 0.6 },
+              { label: 'Seoul', timezone: 'Asia/Seoul', scale: 0.6 }
+            ]"
+            :numVisible="5"
+            :numScroll="5"
+            :responsiveOptions="responsiveOptions"
+            :show-indicators="false"
+            :circular="true"
+          >
+            <template #item="slotProps">
+              <div class="flex-col items-center justify-center">
+                <WorldClock
+                  class="overflow-visible -my-10"
+                  :style="{ scale: slotProps.data.scale }"
+                  :timezone="slotProps.data.timezone"
+                />
+                <div class="text-center">{{ slotProps.data.label }}</div>
+              </div>
+            </template>
+          </Carousel>
         </section>
         <section class="!p-0">
           <div class="shadow-lg">

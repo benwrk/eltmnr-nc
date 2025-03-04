@@ -46,8 +46,8 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="clock-wrapper">
-    <div ref="clock" class="clock" :style="{ backgroundImage: `url(${ClockFace})` }">
+  <div class="clock-wrapper grow-0">
+    <div ref="clock" class="clock aspect-square grow-0" :style="{ backgroundImage: `url(${ClockFace})` }">
       <div class="hour" ref="hour"></div>
       <div class="min" ref="min"></div>
       <div class="sec" ref="sec"></div>
@@ -59,6 +59,8 @@ onMounted(() => {
 .clock {
   min-height: 18em;
   min-width: 18em;
+  max-height: 32em;
+  max-width: 32em;
   margin-left: -1em;
   margin-right: -1em;
   display: flex;
@@ -66,10 +68,11 @@ onMounted(() => {
   align-items: center;
   background-color: var(--main-bg-color);
   background-position: center center;
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
   border-radius: 50%;
   transition: all ease 0.2s;
-  scale: 0.75;
+  /* scale: 0.75; */
 }
 .clock:before {
   content: '';

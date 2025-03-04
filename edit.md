@@ -30,14 +30,14 @@
 # W2/25
 ## Desktop View
 - [ ] ยังขาด gallery หน้า Project > Lavish Estates
-- [ ] เปลี่ยนสีพื้นหลัง villa type เป็นสีขาว
+- [x] เปลี่ยนสีพื้นหลัง villa type เป็นสีขาว
 - [x] FAQ remove กล่องสีขาวออกแล้วใช้เส้น แบ่ง section แทน 
 - [x] Apply "L" Icon at each points of FAQ
 
 ## Mobile Responsive
-- [ ] remove excess section introduction space (คำกับภาพ กว้างไปต้องให้อยุ่ในหน้าเดียวกัน)
+- [x] remove excess section introduction space (คำกับภาพ กว้างไปต้องให้อยุ่ในหน้าเดียวกัน)
 - [x] fix proportion new award 
 - [x] fix cornwell logo font bug
-- [ ] เพิ่มปุ่มลูกศรซ้ายขวา clock
-- [ ] จัดวาง type details ให้อยู่ในหน้าเดียวกัน
-- [ ] floor plan อยู่เหนือ villa details icon appear 2 rows
+- [x] เพิ่มปุ่มลูกศรซ้ายขวา clock
+- [x] จัดวาง type details ให้อยู่ในหน้าเดียวกัน
+- [x] floor plan อยู่เหนือ villa details icon appear 2 rows
