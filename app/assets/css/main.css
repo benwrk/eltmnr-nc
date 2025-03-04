@@ -46,7 +46,7 @@
       @apply text-base;
     }
 
-    :not(h1, h2, h3, h4, h5, h6) { /* Apply to all elements except headings */
+    :not(h1, h2, h3, h4, h5, h6) { /* Apply to all elements except headings and buttons */
       > a:not(.p-button) {
         @apply text-primary hover:underline;
       }
@@ -54,7 +54,6 @@
 
     .p-image-original {
       @apply w-full h-full !max-w-[calc(100vw-4rem)] !max-h-[calc(100vh-4rem)] object-cover shadow-lg;
-      /* @apply rounded-xl; */
     }
 
     .p-image {

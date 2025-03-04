@@ -1,4 +1,4 @@
-# รายการแก้ไข
+# W1/25
 - [x] Navbar ตอนแรกสีดำ เลื่อนลงเป็นสีขาว
 - [x] Navbar ลดขนาดลงเมื่อเลื่อนลง
 - [x] เอา Night Mode ออก
@@ -20,9 +20,24 @@
 - [x] เพิ่มสถานะ Sold ใน Map Legend (เปลี่ยนสี bg เพิ่มคำว่า sold)
 - [x] เปลี่ยนรูป Lavish Estates เป็น _137.jpg
 - [x] Menu Animation
-- [ ] ปรับ Layout ของ Villa เป็น Two columns
+- [x] ปรับ Layout ของ Villa เป็น Two columns
 - [x] เปลี่ยนรูป Cornwell เป็น _235.jpg
 - [x] Layout ใหม่ของ Header
 - [x] Cornwell Description
 - [ ] Blog
 - [ ] Project Gallery
+
+# W2/25
+## Desktop View
+- [ ] ยังขาด gallery หน้า Project > Lavish Estates
+- [ ] เปลี่ยนสีพื้นหลัง villa type เป็นสีขาว
+- [x] FAQ remove กล่องสีขาวออกแล้วใช้เส้น แบ่ง section แทน 
+- [x] Apply "L" Icon at each points of FAQ
+
+## Mobile Responsive
+- [ ] remove excess section introduction space (คำกับภาพ กว้างไปต้องให้อยุ่ในหน้าเดียวกัน)
+- [x] fix proportion new award 
+- [x] fix cornwell logo font bug
+- [ ] เพิ่มปุ่มลูกศรซ้ายขวา clock
+- [ ] จัดวาง type details ให้อยู่ในหน้าเดียวกัน
+- [ ] floor plan อยู่เหนือ villa details icon appear 2 rows

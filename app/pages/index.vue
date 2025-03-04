@@ -8,6 +8,7 @@ import Project1 from '/projects/lavish-estates/hero.jpg'
 import Project2 from '/home/project-2.jpg'
 import ProjectLogo1 from '/logos/project-1-light.svg'
 import ProjectLogo2 from '/logos/project-2-light.svg'
+import LavishEstatesLe from '/logos/lavish-estates-le-black.svg'
 
 const route = useRoute()
 
@@ -300,7 +301,18 @@ onMounted(() => {
             <h1 class="fade-in">FAQs</h1>
             <Accordion class="mt-4" expand-icon="pi pi-plus" collapse-icon="pi pi-times" value="0">
               <AccordionPanel v-for="(item, index) in data.faqs" :value="index">
-                <AccordionHeader>{{ item.question }}</AccordionHeader>
+                <hr
+                  v-if="index > 0"
+                  class="border-2 w-full self-center border-primary-contrast my-1"
+                />
+                <AccordionHeader>
+                  <template #default>
+                    {{ item.question }}
+                  </template>
+                  <template #toggleicon>
+                    <img class="w-4 opacity-70 dark:invert" :src="LavishEstatesLe" alt="expand" />
+                  </template>
+                </AccordionHeader>
                 <AccordionContent>
                   <p class="m-0">
                     {{ item.answer }}
@@ -364,23 +376,16 @@ main {
 }
 
 :deep(.p-accordionpanel) {
-  /* &:not(.p-accordionpanel-active) {
-    .p-accordionheader {
-      @apply border-0;
-    }
-  } */
-  /* &.p-accordionpanel-active {
-    .p-accordionheader {
-      @apply !border-b-0;
-      @apply border-[1px];
-    }
-  } */
   .p-accordionheader {
-    @apply bg-primary-contrast mt-2;
+    @apply bg-transparent;
     @apply border-0;
+    @apply px-0;
+    /* @apply text-lg; */
   }
   .p-accordioncontent-content {
+    @apply bg-transparent;
     @apply border-0;
+    @apply px-0;
   }
 }
 </style>
