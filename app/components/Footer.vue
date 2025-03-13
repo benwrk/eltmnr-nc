@@ -23,7 +23,7 @@ const { data: projectData } = await useAsyncData('footer-project', () => {
 })
 </script>
 <template>
-  <div ref="root" class="bg-surface-0 dark:bg-surface-800 shadow-[0_0_50px_-10px_rgba(0,0,0,0.2)] border border-white/20 border-b-0 w-full fade-in">
+  <div ref="root" class="bg-highlight dark:bg-surface-800 border-surface-950/20 border-t border-b-0 w-full fade-in">
     <div class="container mx-auto flex flex-col items-center">
       <div
         id="footer"
