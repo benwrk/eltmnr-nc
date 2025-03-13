@@ -130,7 +130,7 @@ const responsiveOptions = [
 </script>
 
 <template>
-  <div ref="root" class="mb-8">
+  <div ref="root">
     <div class="flex flex-col w-full">
       <div ref="translateHeroOriginDiv" class="relative w-full h-screen">
         <HeroVideoPlayer
@@ -180,10 +180,12 @@ const responsiveOptions = [
                 </span>
               </header>
             </div>
-            <div class="basis-full flex justify-center md:justify-center items-baseline flex-wrap p-4 md:p-12 mb-12">
+            <div
+              class="basis-full flex justify-center md:justify-center items-baseline flex-wrap p-4 md:p-12 mb-12"
+            >
               <span class="font-display text-5xl md:text-6xl uppercase">Classic </span>
-              <span class="font-display text-primary text-7xl md:text-9xl md:ml-4 uppercase"
-                > Luxury</span
+              <span class="font-display text-primary text-7xl md:text-9xl md:ml-4 uppercase">
+                Luxury</span
               >
             </div>
           </div>

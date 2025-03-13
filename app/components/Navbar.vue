@@ -42,7 +42,7 @@ const items = ref([
     class: {
       active: route.path === '/',
       'p-menu-item-active': true,
-      heading: true,
+      heading: true
       // 'fade-in': true
     }
   },
@@ -59,7 +59,7 @@ const items = ref([
           class: {
             active: route.path === page.path,
             'p-menu-item-active': true,
-            submenu: true,
+            submenu: true
             // 'fade-in': true
           }
         })) ?? [])
@@ -78,7 +78,7 @@ const items = ref([
           class: {
             active: route.path === page.path,
             'p-menu-item-active': true,
-            submenu: true,
+            submenu: true
             // 'fade-in': true
           }
         })) ?? [])
@@ -106,31 +106,53 @@ function toggleTheme() {
 }
 </script>
 <template>
-  <div ref="root" class="group fixed border-none w-full z-10" :class="{ 'at-top': atTop, 'dark-theme': atTop }">
-    <!-- {{ route.path }} -->
-    <div id="menu-container" class="container mx-auto relative"></div>
-    <div class="container mx-auto my-4 flex flex-col items-center"">
-      <Toolbar
-        id=" navbar"
-      class="w-[102.5%] max-w-[calc(100vw-2rem)] bg-surface-50 group-[.at-top]:bg-surface-800 dark:bg-surface-800 !bg-opacity-65 shadow-[0_0_50px_-10px_rgba(0,0,0,0.4)] backdrop-blur-md border border-white/20 flex items-center justify-between rounded-lg p-2 transition-all duration-700">
-      <template #center>
-        <div class="basis-1/4 flex justify-start">
-          <Button variant="text" type="button" icon="pi pi-bars" size="large" @click="toggle" aria-haspopup="true"
-            aria-controls="overlay_menu" rounded />
-          <!-- Manually control position due to PrimeVue's menu toggle positioning bug for fixed parent element. -->
-          <Menu
-            class="!top-28 !left-0 bg-surface-50 group-[.at-top]:bg-surface-800 !bg-opacity-65 shadow-[0_0_50px_-10px_rgba(0,0,0,0.4)] backdrop-blur-md border border-white/20"
-            ref="menu" id="overlay_menu" :model="items" :popup="true" append-to="#menu-container" />
-        </div>
-        <div class="basis-2/4 flex justify-center">
-          <a href="/">
-            <NuxtImg class="py-1 group-[.at-top]:h-16 h-12 transition-[height] duration-700"
-              :src="atTop ? brandImageDark : brandImage" alt="Logo" />
-            <!-- <NuxtImg class="py-1 group-[.at-top]:h-14 h-12 hidden group-[.at-top]:block transition-[height] duration-700" :src="brandImageDark" alt="Logo"/> -->
-          </a>
-        </div>
-        <div class="basis-1/4 flex justify-end">
-          <!-- <Button
+  <div class="fixed z-10 group w-full" :class="{ 'at-top': atTop, 'dark-theme': atTop }">
+    <div id="menu-container" class="container mx-auto relative">
+      <!-- Manually control position due to PrimeVue's menu toggle positioning bug for fixed parent element. -->
+      <Menu
+        class="!top-28 !left-0 bg-surface-50 group-[.at-top]:!bg-surface-800 dark:!bg-surface-800 !bg-opacity-65 shadow-[0_0_50px_-10px_rgba(0,0,0,0.4)] backdrop-blur-md border border-white/20 transition-all duration-700"
+        ref="menu"
+        id="overlay_menu"
+        :model="items"
+        :popup="true"
+        append-to="#menu-container"
+      />
+    </div>
+    <div
+      ref="root"
+      class="fixed border-none w-full z-10 bg-surface-50 group-[.at-top]:bg-surface-800 dark:bg-surface-800 !bg-opacity-65 shadow-[0_0_50px_-10px_rgba(0,0,0,0.4)] backdrop-blur-md border border-white/20 rounded-lg transition-all duration-700"
+    >
+      <!-- {{ route.path }} -->
+      <div class="container mx-auto flex flex-col items-center">
+        <Toolbar
+          id=" navbar"
+          class="w-[102.5%] max-w-[calc(100vw-2rem)] flex items-center justify-between p-2 bg-transparent border-transparent"
+        >
+          <template #center>
+            <div class="basis-1/4 flex justify-start">
+              <Button
+                variant="text"
+                type="button"
+                icon="pi pi-bars"
+                size="large"
+                @click="toggle"
+                aria-haspopup="true"
+                aria-controls="overlay_menu"
+                rounded
+              />
+            </div>
+            <div class="basis-2/4 flex justify-center">
+              <a href="/">
+                <NuxtImg
+                  class="py-1 group-[.at-top]:h-16 h-12 transition-[height] duration-700"
+                  :src="atTop ? brandImageDark : brandImage"
+                  alt="Logo"
+                />
+                <!-- <NuxtImg class="py-1 group-[.at-top]:h-14 h-12 hidden group-[.at-top]:block transition-[height] duration-700" :src="brandImageDark" alt="Logo"/> -->
+              </a>
+            </div>
+            <div class="basis-1/4 flex justify-end">
+              <!-- <Button
               as="a"
               @click="toggleTheme"
               class="dark:hidden"
@@ -148,11 +170,26 @@ function toggleTheme() {
               size="large"
               rounded
             /> -->
-          <Button as="a" variant="text" icon="pi pi-phone" size="large" rounded href="tel:+66991614562" />
-          <Button as="a" variant="text" icon="pi pi-envelope" size="large" rounded href="mailto:sales@eltmnr.com" />
-        </div>
-      </template>
-      </Toolbar>
+              <Button
+                as="a"
+                variant="text"
+                icon="pi pi-phone"
+                size="large"
+                rounded
+                href="tel:+66991614562"
+              />
+              <Button
+                as="a"
+                variant="text"
+                icon="pi pi-envelope"
+                size="large"
+                rounded
+                href="mailto:sales@eltmnr.com"
+              />
+            </div>
+          </template>
+        </Toolbar>
+      </div>
     </div>
   </div>
 </template>

@@ -25,7 +25,6 @@
 - [x] Layout ใหม่ของ Header
 - [x] Cornwell Description
 - [ ] Blog
-- [ ] Project Gallery
 
 # W2/25
 ## Desktop View
@@ -41,3 +40,24 @@
 - [x] เพิ่มปุ่มลูกศรซ้ายขวา clock
 - [x] จัดวาง type details ให้อยู่ในหน้าเดียวกัน
 - [x] floor plan อยู่เหนือ villa details icon appear 2 rows
+
+# W3/25
+## Web
+- [x] Navbar ขยายให้เต็ม
+- [x] Footer ขยายให้เต็ม
+- [ ] Header Zone -> Black Background
+- [ ] Scrolling Lag
+- [ ] FAQ -> Black Blackground
+- [ ] Estate Management -> Change Image to _049.jpg
+- [ ] Add parallax effect > Homepage
+- [ ] Map Legend -> Dark Color for Sold
+- [ ] Implement Vertical List Scrolling > Homepage
+- [ ] Gallery
+
+## K. Reggae
+- [ ] Video -> Slideshow
+- [ ] Terms and Conditions
+
+## Surplus
+- [ ] Instagram
+- [ ] Clock carousel
