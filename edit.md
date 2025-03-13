@@ -48,7 +48,7 @@
 - [x] Header Zone -> Black Background
 - [ ] Scrolling Lag
 - [x] FAQ -> Black Blackground
-- [ ] Estate Management -> Change Image to _049.jpg
+- [x] Estate Management -> Change Image to _049.jpg
 - [ ] Add parallax effect > Homepage
 - [ ] Map Legend -> Dark Color for Sold
 - [ ] Implement Vertical List Scrolling > Homepage
@@ -61,3 +61,4 @@
 ## Surplus
 - [ ] Instagram
 - [ ] Clock carousel
+- [ ] Blog

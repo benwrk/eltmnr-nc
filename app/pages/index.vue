@@ -165,11 +165,10 @@ const responsiveOptions = [
             ></div>
           </div>
           <div class="flex items-center flex-wrap gap-y-0 md:gap-y-12">
-            <Image
+            <ParallaxImage
               :src="HeroImage"
               alt="Hero Image"
               class="basis-4/5 md:basis-3/5 aspect-video max-h-96 rounded-lg rounded-l-none fade-in shadow-2xl"
-              preview
             />
             <div class="basis-full md:basis-2/5 p-12">
               <header class="flex flex-col gap-y-4">
@@ -268,11 +267,10 @@ const responsiveOptions = [
             <h1 class="text-4xl fade-in">Our Projects</h1>
             <!-- <div class="flex flex-col bg-highlight rounded-xl shadow-lg"> -->
             <div class="flex items-end gap-x-16 flex-wrap md:flex-nowrap gap-y-8 md:gap-y-12">
-              <Image
+              <ParallaxImage
                 :src="Project1"
                 alt="Project 1"
                 class="basis-full md:basis-1/2 w-full rounded-lg aspect-square max-h-96"
-                preview
               />
               <div class="basis-full md:basis-1/2 p-4 md:p-0 flex flex-col gap-y-8">
                 <Image
@@ -296,11 +294,10 @@ const responsiveOptions = [
             </div>
             <hr class="border-2 w-full self-center" />
             <div class="my-4 md:my-0 flex items-end gap-x-16 flex-wrap md:flex-nowrap gap-y-12">
-              <Image
+              <ParallaxImage
                 :src="Project2"
                 alt="Project 2"
                 class="basis-full md:basis-1/2 w-full rounded-lg aspect-square max-h-96"
-                preview
               />
               <div class="basis-full md:basis-1/2 p-4 md:p-0 flex flex-col gap-y-8">
                 <Image
