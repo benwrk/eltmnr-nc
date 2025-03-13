@@ -10,7 +10,7 @@ export default {
     //   }
     // }
   },
-  darkMode: ['selector', '.dark-theme'],
+  darkMode: ["variant", "&:is(.dark-theme *):not(.light-theme *)"],
   theme: {
     fontFamily: {
       display: ['Red Hat Display', 'sans-serif'],

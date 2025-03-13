@@ -45,9 +45,9 @@
 ## Web
 - [x] Navbar ขยายให้เต็ม
 - [x] Footer ขยายให้เต็ม
-- [ ] Header Zone -> Black Background
+- [x] Header Zone -> Black Background
 - [ ] Scrolling Lag
-- [ ] FAQ -> Black Blackground
+- [x] FAQ -> Black Blackground
 - [ ] Estate Management -> Change Image to _049.jpg
 - [ ] Add parallax effect > Homepage
 - [ ] Map Legend -> Dark Color for Sold

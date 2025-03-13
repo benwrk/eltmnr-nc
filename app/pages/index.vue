@@ -132,7 +132,7 @@ const responsiveOptions = [
 <template>
   <div ref="root">
     <div class="flex flex-col w-full">
-      <div ref="translateHeroOriginDiv" class="relative w-full h-screen">
+      <div ref="translateHeroOriginDiv" class="relative w-full h-screen bg-surface-950 dark-theme">
         <HeroVideoPlayer
           class="shadow-2xl"
           :class="{ 'rounded-l-lg': translateHeroStage >= 0.99 }"
@@ -144,7 +144,7 @@ const responsiveOptions = [
           :videoId="videoId!"
         />
       </div>
-      <div class="flex flex-col w-full pb-16">
+      <div class="flex flex-col w-full pb-16 bg-surface-950 dark-theme text-surface-300">
         <section
           :style="{
             paddingTop: `${navbarHeight}px`
@@ -321,7 +321,7 @@ const responsiveOptions = [
             <!-- </div> -->
           </div>
         </section>
-        <section v-if="data?.faqs" class="flex flex-col w-full fade-in">
+        <section v-if="data?.faqs" class="flex flex-col w-full fade-in dark-theme !bg-surface-950">
           <div class="flex flex-col container mx-auto px-4">
             <h1 class="fade-in">FAQs</h1>
             <Accordion class="mt-4" expand-icon="pi pi-plus" collapse-icon="pi pi-times" value="0">
@@ -433,12 +433,13 @@ main {
     @apply bg-transparent;
     @apply border-0;
     @apply px-0;
-    /* @apply text-lg; */
+    @apply text-surface-300;
   }
   .p-accordioncontent-content {
     @apply bg-transparent;
     @apply border-0;
     @apply px-0;
+    @apply text-surface-300;
   }
 }
 </style>
