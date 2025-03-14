@@ -51,7 +51,7 @@ const handleError = () => clearError({ redirect: '/' })
           class="p-1 mt-1 mr-auto"
         ></Button>
         <pre
-          class="mt-12 text-xs bg-highlight rounded-lg p-2 mr-auto text-muted-color"
+          class="mt-12 text-xs bg-highlight rounded-lg p-2 mr-auto text-muted-color text-wrap"
         ><h2 class="text-xs uppercase">Error details</h2>{{
               error
             }}</pre>
