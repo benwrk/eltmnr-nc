@@ -46,11 +46,11 @@
 - [x] Navbar ขยายให้เต็ม
 - [x] Footer ขยายให้เต็ม
 - [x] Header Zone -> Black Background
-- [ ] Scrolling Lag
+- [x] Scrolling Lag
 - [x] FAQ -> Black Blackground
 - [x] Estate Management -> Change Image to _049.jpg
-- [ ] Add parallax effect > Homepage
-- [ ] Map Legend -> Dark Color for Sold
+- [x] Add parallax effect > Homepage
+- [x] Map Legend -> Dark Color for Sold
 - [ ] Implement Vertical List Scrolling > Homepage
 - [ ] Gallery
 
@@ -60,5 +60,5 @@
 
 ## Surplus
 - [ ] Instagram
-- [ ] Clock carousel
+- [ ] Fix clock carousel
 - [ ] Blog
