@@ -137,7 +137,7 @@ const responsiveOptions = [
           class="shadow-2xl"
           :class="{ 'rounded-l-lg': translateHeroStage >= 0.99 }"
           :style="{
-            transform: `translate(${translateHeroValues.translate.x}px, ${translateHeroValues.translate.y}px)`,
+            transform: `translate3d(${translateHeroValues.translate.x}px, ${translateHeroValues.translate.y}px, 0)`,
             width: `${translateHeroValues.size.w}px`,
             height: `${translateHeroValues.size.h}px`
           }"
