@@ -16,6 +16,7 @@ const props = defineProps({
 
 const router = useRouter()
 const handleError = () => clearError({ redirect: '/' })
+const reload = () => window.location.reload()
 </script>
 
 <template>
@@ -50,11 +51,16 @@ const handleError = () => clearError({ redirect: '/' })
           label="Go back to the previous page"
           class="p-1 mt-1 mr-auto"
         ></Button>
+        <Button
+          text
+          @click="reload"
+          icon="pi pi-refresh"
+          label="Try reloading this page"
+          class="p-1 mt-1 mr-auto"
+        ></Button>
         <pre
           class="mt-12 text-xs bg-highlight rounded-lg p-2 mr-auto text-muted-color text-wrap"
-        ><h2 class="text-xs uppercase">Error details</h2>{{
-              error
-            }}</pre>
+        ><h2 class="text-xs uppercase">Error details</h2>{{ error }}</pre>
       </div>
     </div>
     <Footer ref="footer" />
