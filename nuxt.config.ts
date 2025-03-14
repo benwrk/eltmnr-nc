@@ -43,9 +43,6 @@ export default defineNuxtConfig({
         { name: 'apple-mobile-web-app-title', content: 'Elite Manor' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' }
       ],
-      // htmlAttrs: {
-      //   class: 'dark-theme'
-      // },
       link: [
         {
           rel: 'icon',
@@ -78,24 +75,10 @@ export default defineNuxtConfig({
     url: 'eltmnr.com'
   },
   nitro: {
-    // static: true,
     prerender: {
       crawlLinks: true
-      // failOnError: false
     }
-    // prerender: {
-    //   routes: [
-    //     '/'
-    //     // '/projects'
-    //   ],
-    //   crawlLinks: true
-    // }
   },
-  // routeRules: {
-  //   '/**': {
-  //     prerender: true
-  //   }
-  // },
   content: {
     preview: { dev: true },
     renderer: { anchorLinks: { h1: true, h2: true, h3: true, h4: true, h5: true, h6: true } }
@@ -135,6 +118,11 @@ export default defineNuxtConfig({
         },
         preset: customPreset
       }
+    }
+  },
+  vite: {
+    server: {
+      allowedHosts: ['.benwrk.com']
     }
   }
 })

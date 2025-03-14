@@ -51,6 +51,7 @@
 - [x] Estate Management -> Change Image to _049.jpg
 - [x] Add parallax effect > Homepage
 - [x] Map Legend -> Dark Color for Sold
+- [x] Fix award image
 - [ ] Implement Vertical List Scrolling > Homepage
 - [ ] Gallery
 
