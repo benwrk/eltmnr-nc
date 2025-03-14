@@ -82,7 +82,7 @@ importers:
         specifier: 15.0.1
         version: 15.0.1
       sass-embedded:
-        specifier: ^1.85.1
+        specifier: 1.85.1
         version: 1.85.1
       tailwindcss:
         specifier: 3.4.17
