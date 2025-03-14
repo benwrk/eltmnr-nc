@@ -1,6 +1,4 @@
 <script setup lang="ts">
-// @ts-expect-error - no types available
-import Parallaxy from '@lucien144/vue3-parallaxy'
 const root = ref<HTMLDivElement | undefined>()
 </script>
 
@@ -13,7 +11,7 @@ const root = ref<HTMLDivElement | undefined>()
     >
       <img
         v-bind="$attrs"
-        class="rellax w-full h-full object-cover origin-center transition-all duration-1000"
+        class="w-full h-full object-cover origin-center transition-all duration-1000"
         style="scale: 1.33"
       />
     </Parallaxy>

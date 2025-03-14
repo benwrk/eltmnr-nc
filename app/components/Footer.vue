@@ -23,7 +23,10 @@ const { data: projectData } = await useAsyncData('footer-project', () => {
 })
 </script>
 <template>
-  <div ref="root" class="bg-highlight dark:bg-surface-800 border-surface-950/20 border-t border-b-0 w-full fade-in">
+  <div
+    ref="root"
+    class="bg-highlight dark:bg-surface-800 border-surface-950/20 border-t border-b-0 w-full fade-in"
+  >
     <div class="container mx-auto flex flex-col items-center">
       <div
         id="footer"
@@ -53,7 +56,10 @@ const { data: projectData } = await useAsyncData('footer-project', () => {
         <div class="flex flex-col fade-in basis-full md:basis-auto">
           <h5>Projects</h5>
           <ul class="mt-2 flex flex-col gap-x-2">
-            <li v-for="item in projectData?.at(0)?.children?.filter((i: ProjectCollectionItem) => !i.navHidden)" :key="item.id">
+            <li
+              v-for="item in projectData?.at(0)?.children?.filter((i: ProjectCollectionItem) => !i.navHidden)"
+              :key="item.id"
+            >
               <NuxtLink :to="item.path" class="text-primary-emphasis-alt">
                 {{ item.title }}
               </NuxtLink>
