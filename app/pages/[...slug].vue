@@ -18,8 +18,7 @@ if (!page.value) {
 <template>
   <div class="w-full">
     <img
-      v-if="page?.heroImage"
-      :src="page.heroImage"
+      :src="page?.heroImage || '/hero-images/home.jpg'"
       alt="Hero Image"
       class="w-full h-[80vh] object-cover"
     />
@@ -37,10 +36,25 @@ if (!page.value) {
   h4,
   h5,
   h6,
+  ul,
+  ol,
   p {
     @apply mb-4;
   }
-/*
+
+  ul {
+    @apply list-disc;
+  }
+
+  ol {
+    @apply list-decimal;
+  }
+
+  li {
+    @apply ml-4;
+  }
+
+  /*
   h1, h2, h3, h4, h5, h6 {
     :after {
       content: attr();
