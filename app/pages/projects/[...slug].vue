@@ -49,7 +49,7 @@ if (!page.value) {
     @apply mb-4;
   }
   img {
-    @apply w-full rounded-lg;
+    @apply w-full;
     /* @apply max-w-[64rem]; */
   }
 }

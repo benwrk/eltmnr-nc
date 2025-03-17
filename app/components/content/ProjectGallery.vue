@@ -1,53 +1,63 @@
 <script setup lang="ts">
-import { type Galleria } from 'primevue'
+import { DataView, type Galleria } from 'primevue'
+type Image = {
+  imageSrc: string
+  description: string
+}
+type Album = {
+  name: string
+  images: Image[]
+}
 const props = defineProps<{
-  albums: {
-    name: string
-    images: { imageSrc: string; description: string }[]
-  }[]
+  albums: Album[]
 }>()
 
-const responsiveOptions = ref([
-  {
-    breakpoint: '1300px',
-    numVisible: 4
-  },
-  {
-    breakpoint: '575px',
-    numVisible: 1
-  }
-])
+// const responsiveOptions = ref([
+//   {
+//     breakpoint: '1300px',
+//     numVisible: 4
+//   },
+//   {
+//     breakpoint: '575px',
+//     numVisible: 1
+//   }
+// ])
 
-const selectedAlbum = ref(props.albums[0]?.name)
-const activeAlbum = computed(() =>
-  props.albums
-    .find((a) => a.name === selectedAlbum.value)
-    ?.images.map((i) => ({
-      itemImageSrc: i.imageSrc,
-      alt: i.description,
-      title: i.description,
-      thumbnailImageSrc: i.imageSrc
-    }))
-)
-const galleria = ref<InstanceType<typeof Galleria>>()
-const activeIndex = ref(0)
+const selectedAlbumName = ref(props.albums[0]?.name)
+const selectedAlbum = computed(() => props.albums.find((a) => a.name === selectedAlbumName.value))
+const dataView = ref<InstanceType<typeof DataView>>()
+// const activeAlbum = computed(() =>
+//   props.albums
+//     .find((a) => a.name === selectedAlbum.value)
+//     ?.images.map((i) => ({
+//       itemImageSrc: i.imageSrc,
+//       alt: i.description,
+//       title: i.description,
+//       thumbnailImageSrc: i.imageSrc
+//     }))
+// )
+// const galleria = ref<InstanceType<typeof Galleria>>()
+// const activeIndex = ref(0)
 
-onMounted(() => {
-  console.log(
-    props.albums
-      .find((a) => a.name === selectedAlbum.value)
-      ?.images.map((i) => ({
-        itemImageSrc: i.imageSrc,
-        alt: i.description,
-        title: i.description,
-        thumbnailImageSrc: i.imageSrc
-      }))
-  )
-})
+// onMounted(() => {
+//   console.log(
+//     props.albums
+//       .find((a) => a.name === selectedAlbum.value)
+//       ?.images.map((i) => ({
+//         itemImageSrc: i.imageSrc,
+//         alt: i.description,
+//         title: i.description,
+//         thumbnailImageSrc: i.imageSrc
+//       }))
+//   )
+// })
 
 // watch(selectedAlbum, () => {
 //   activeIndex.value = 0
 // })
+// function resetDataView() {
+//   dataView.value?.$slots.
+// }
 </script>
 
 <template>
@@ -123,7 +133,7 @@ onMounted(() => {
     >
   </template> -->
   <div class="flex flex-col">
-    <Galleria
+    <!-- <Galleria
       ref="galleria"
       :value="activeAlbum"
       :active-index="activeIndex"
@@ -152,7 +162,124 @@ onMounted(() => {
           :alt="slotProps.item.alt"
         />
       </template>
-    </Galleria>
+    </Galleria> -->
+    <DataView
+      ref="dataView"
+      data-key="imageSrc"
+      :value="selectedAlbum?.images"
+      layout="grid"
+      paginator
+      paginatorPosition="bottom"
+      :rows="6"
+      class="rounded-none"
+      paginatorTemplate="FirstPageLink PrevPageLink CurrentPageReport NextPageLink LastPageLink"
+      currentPageReportTemplate="{first}-{last} of {totalRecords}"
+    >
+      <template #footer>
+        <div class="flex justify-center">
+          <SelectButton
+            v-model="selectedAlbumName"
+            :options="props.albums.map((a) => a.name)"
+            :allowEmpty="false"
+          >
+            <template #option="{ option }">
+              <i class="pi pi-images"></i> <span class="uppercase">{{ option }}</span>
+            </template>
+          </SelectButton>
+        </div>
+      </template>
+      <!--
+      <template #list="slotProps">
+        <div class="flex flex-col">
+          <div v-for="(item, index) in slotProps.items" :key="index">
+            <div
+              class="flex flex-col sm:flex-row sm:items-center p-6 gap-4"
+              :class="{ 'border-t border-surface-200 dark:border-surface-700': index !== 0 }"
+            >
+              <div class="md:w-40 relative">
+                <img
+                  class="block xl:block mx-auto rounded w-full"
+                  :src="`https://primefaces.org/cdn/primevue/images/product/${item.image}`"
+                  :alt="item.name"
+                />
+                <div class="absolute bg-black/70 rounded-border" style="left: 4px; top: 4px">
+                  <Tag :value="item.inventoryStatus" :severity="getSeverity(item)"></Tag>
+                </div>
+              </div>
+              <div class="flex flex-col md:flex-row justify-between md:items-center flex-1 gap-6">
+                <div class="flex flex-row md:flex-col justify-between items-start gap-2">
+                  <div>
+                    <span class="font-medium text-surface-500 dark:text-surface-400 text-sm">{{
+                      item.category
+                    }}</span>
+                    <div class="text-lg font-medium mt-2">{{ item.name }}</div>
+                  </div>
+                  <div class="bg-surface-100 p-1" style="border-radius: 30px">
+                    <div
+                      class="bg-surface-0 flex items-center gap-2 justify-center py-1 px-2"
+                      style="
+                        border-radius: 30px;
+                        box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.04),
+                          0px 1px 2px 0px rgba(0, 0, 0, 0.06);
+                      "
+                    >
+                      <span class="text-surface-900 font-medium text-sm">{{ item.rating }}</span>
+                      <i class="pi pi-star-fill text-yellow-500"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex flex-col md:items-end gap-8">
+                  <span class="text-xl font-semibold">${{ item.price }}</span>
+                  <div class="flex flex-row-reverse md:flex-row gap-2">
+                    <Button icon="pi pi-heart" outlined></Button>
+                    <Button
+                      icon="pi pi-shopping-cart"
+                      label="Buy Now"
+                      :disabled="item.inventoryStatus === 'OUTOFSTOCK'"
+                      class="flex-auto md:flex-initial whitespace-nowrap"
+                    ></Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </template> -->
+
+      <template #grid="slotProps">
+        <div class="grid grid-cols-12 gap-8 p-4">
+          <div
+            v-for="(item, index) in slotProps.items as Image[]"
+            :key="index"
+            class="col-span-12 sm:col-span-6 md:col-span-4 xl:col-span-4"
+          >
+            <div class="bg-surface-0 dark:bg-surface-900 flex flex-col">
+              <div class="flex justify-center">
+                <Image
+                  class="w-full aspect-square"
+                  :src="item.imageSrc"
+                  :alt="item.description"
+                  preview
+                />
+                <!-- <div class="absolute bg-black/70 rounded-border" style="left: 4px; top: 4px"> -->
+                <!-- <Tag :value="item.inventoryStatus" :severity="getSeverity(item)"></Tag> -->
+                <!-- </div> -->
+              </div>
+              <!-- <div class="pt-6">
+                <div class="flex flex-row justify-between items-start gap-2">
+                  <div>
+                    <span class="font-medium text-surface-500 dark:text-surface-400 text-sm">{{
+                      item.category
+                    }}</span>
+                    <div class="text-lg font-medium mt-1">{{ item.name }}</div>
+                  </div>
+                </div>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </template>
+    </DataView>
     <!-- <SelectButton
       :allowEmpty="false"
       class="w-full"
@@ -162,3 +289,24 @@ onMounted(() => {
     /> -->
   </div>
 </template>
+
+<style scoped>
+:deep(.p-dataview) {
+  .p-dataview-header,
+  .p-dataview-footer,
+  .p-paginator,
+  .p-paginator-current {
+    @apply bg-highlight-emphasis;
+    @apply !rounded-none border-none;
+  }
+  .p-dataview-footer {
+    @apply pt-0;
+  }
+}
+
+:deep(.p-selectbutton) {
+  .p-togglebutton {
+    @apply bg-transparent border-none text-base p-0 mx-2;
+  }
+}
+</style>
