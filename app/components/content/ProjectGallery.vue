@@ -64,6 +64,7 @@ const dataView = ref<InstanceType<typeof DataView>>()
           </div>
         </div>
       </template>
+      <template #empty><div class="flex justify-center items-center p-4">No images</div></template>
     </DataView>
   </div>
 </template>

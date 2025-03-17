@@ -57,7 +57,7 @@ const { data: projectData } = await useAsyncData('footer-project', () => {
           <h5>Projects</h5>
           <ul class="mt-2 flex flex-col gap-x-2">
             <li
-              v-for="item in projectData?.at(0)?.children?.filter((i: ProjectCollectionItem) => !i.navHidden)"
+              v-for="item in projectData?.at(0)?.children?.filter((i) => !i.navHidden)"
               :key="item.id"
             >
               <NuxtLink :to="item.path" class="text-primary-emphasis-alt">
