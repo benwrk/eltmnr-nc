@@ -112,8 +112,13 @@ const { data: projectData } = await useAsyncData('footer-project', () => {
         <div class="basis-full fade-in text-center">
           &copy; {{ new Date().getFullYear() }} &mdash; All Rights Reserved<br />
           <div class="text-sm">
-            <a class="text-primary-emphasis-alt" href="#">Privacy Policy</a> |
-            <a class="text-primary-emphasis-alt" href="#">Terms of Service</a>
+            <RouterLink class="text-primary-emphasis-alt" :to="{ path: '/privacy-policy' }"
+              >Privacy Policy</RouterLink
+            >
+            |
+            <RouterLink class="text-primary-emphasis-alt" :to="{ path: '/privacy-policy' }"
+              >Terms of Service</RouterLink
+            >
           </div>
         </div>
       </div>
