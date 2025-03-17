@@ -120,7 +120,7 @@ function toggleTheme() {
     </div>
     <div
       ref="root"
-      class="fixed border-none w-full z-10 bg-surface-50 group-[.at-top]:bg-surface-800 dark:bg-surface-800 !bg-opacity-65 shadow-[0_0_50px_-10px_rgba(0,0,0,0.4)] backdrop-blur-md border border-white/20 rounded-lg transition-all duration-700"
+      class="border-none w-full z-10 bg-surface-50 group-[.at-top]:bg-surface-800 dark:bg-surface-800 !bg-opacity-65 shadow-[0_0_50px_-10px_rgba(0,0,0,0.4)] backdrop-blur-md border border-white/20 rounded-lg transition-all duration-700"
     >
       <!-- {{ route.path }} -->
       <div class="container mx-auto flex flex-col items-center">
