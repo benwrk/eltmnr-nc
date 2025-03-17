@@ -56,8 +56,8 @@
 - [ ] Gallery
 
 ## K. Reggae
-- [ ] Video -> Slideshow
-- [ ] Terms and Conditions
+- [x] Video -> Slideshow
+- [x] Terms and Conditions
 
 ## Surplus
 - [ ] Instagram
@@ -65,11 +65,8 @@
 - [ ] Blog
 
 # W4/25
-- [ ] Add parallax effect > Homepage > not sure it works due to wrong desktop proportion
-- [ ] Map Legend -> Dark Color for Sold > too dark please us the same old color
+- [x] Map Legend -> Dark Color for Sold > too dark please us the same old color
 - [ ] Implement Vertical List Scrolling > Homepage > not sure it works due to wrong desktop proportion
 - [ ] Gallery > want to dispay 9x9 grid
-
-K. Reggae
-- [ ] Video -> Slideshow > working
-- [ ] Terms and Conditions >  working
+- [x] Update video
+- [x] Add privacy policy page

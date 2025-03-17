@@ -23,12 +23,12 @@ const props = defineProps({
         <div class="flex bg-highlight">
           <div v-for="(unit, index) in units" :key="unit.lotNumber" class="flex items-start">
             <div v-if="index !== 0" class="w-0.5 bg-primary-contrast h-full" />
-            <div class="flex flex-col p-4" :class="{ 'bg-surface-950': unit.sold }">
+            <div class="flex flex-col p-4" :class="{ 'bg-highlight-emphasis': unit.sold }">
               <span class="text-nowrap text-primary font-bold text-xs">
                 <FontAwesomeIcon :icon="faHouse" size="xs" /> {{ unit.lotNumber }}
                 <span class="font-normal">{{ unit.sold ? '(SOLD)' : '' }}</span>
               </span>
-              <span class="text-nowrap text-sm text-primary"">{{ unit.name }}</span>
+              <span class="text-nowrap text-sm"">{{ unit.name }}</span>
             </div>
           </div>
         </div>

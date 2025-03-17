@@ -29,8 +29,8 @@ const reload = () => window.location.reload()
       class="flex items-center justify-start"
     >
       <div
-        :style="{ paddingTop: `${navbarHeight}px` }"
-        class="container mx-auto flex flex-col justify-start"
+        :style="{ marginTop: `${navbarHeight}px` }"
+        class="container mx-auto flex flex-col justify-start py-16"
       >
         <h1 class="text-6xl font-bold">
           E{{ error?.statusCode }}!
