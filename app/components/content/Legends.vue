@@ -28,7 +28,7 @@ defineProps({
                 <FontAwesomeIcon :icon="faHouse" size="xs" /> {{ unit.lotNumber }}
                 <span class="font-normal">{{ unit.sold ? '(SOLD)' : '' }}</span>
               </span>
-              <span class="text-nowrap text-sm"">{{ unit.name }}</span>
+              <span class="text-nowrap text-sm">{{ unit.name }}</span>
             </div>
           </div>
         </div>

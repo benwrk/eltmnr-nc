@@ -1,6 +1,5 @@
 <script setup lang="ts">
 const route = useRoute()
-console.log(route.path)
 
 const { data: page } = await useAsyncData('project-' + route.path, () => {
   return queryCollection('project').path(route.path).first()
@@ -19,8 +18,7 @@ if (!page.value) {
 <template>
   <div class="w-full">
     <img
-      v-if="page?.heroImage"
-      :src="page.heroImage"
+      :src="page?.heroImage || '/hero-images/home.jpg'"
       alt="Hero Image"
       class="w-full h-[80vh] object-cover"
     />

@@ -76,7 +76,6 @@ watch(windowScroll.isScrolling, function stickyScroll() {
   const top = translateHeroOriginDiv.value?.offsetTop ?? 0
   const bottom = top + translateHeroOriginSize.height.value + 1
   const scrollTop = windowScroll.y.value
-  console.log({ top, bottom, scrollTop, direction: previousActiveScrollDirection.value })
 
   if (scrollTop <= top || scrollTop >= bottom) {
     return
@@ -292,7 +291,7 @@ const responsiveOptions = [
                 ></Button>
               </div>
             </div>
-            <hr class="border-2 w-full self-center" />
+            <hr class="border w-full self-center" />
             <div class="my-4 md:my-0 flex items-end gap-x-16 flex-wrap md:flex-nowrap gap-y-12">
               <ParallaxImage
                 :src="Project2"
@@ -325,7 +324,7 @@ const responsiveOptions = [
               <AccordionPanel v-for="(item, index) in data.faqs" :value="index">
                 <hr
                   v-if="index > 0"
-                  class="border-2 w-full self-center border-primary-contrast my-1"
+                  class="border w-full self-center border-primary-contrast my-1"
                 />
                 <AccordionHeader>
                   <template #default>

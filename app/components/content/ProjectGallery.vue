@@ -45,24 +45,32 @@ const dataView = ref<InstanceType<typeof DataView>>()
         </div>
       </template>
       <template #grid="slotProps">
+        <!-- <Transition> -->
         <div class="grid grid-cols-12 gap-8 p-4">
-          <div
+          <TransitionGroup
+            name="list"
+            tag="div"
             v-for="(item, index) in slotProps.items as Image[]"
-            :key="index"
             class="col-span-12 sm:col-span-6 md:col-span-4 xl:col-span-4"
           >
-            <div class="bg-surface-0 dark:bg-surface-900 flex flex-col">
-              <div class="flex justify-center">
-                <Image
-                  class="w-full aspect-square"
-                  :src="item.imageSrc"
-                  :alt="item.description"
-                  preview
-                />
+            <Transition name="t" mode="out-in">
+              <div
+                :key="item.imageSrc"
+                class="bg-surface-0 dark:bg-surface-900 flex flex-col w-full h-full"
+              >
+                <div class="flex justify-center">
+                  <Image
+                    class="w-full aspect-square"
+                    :src="item.imageSrc"
+                    :alt="item.description"
+                    preview
+                  />
+                </div>
               </div>
-            </div>
-          </div>
+            </Transition>
+          </TransitionGroup>
         </div>
+        <!-- </Transition> -->
       </template>
       <template #empty><div class="flex justify-center items-center p-4">No images</div></template>
     </DataView>
@@ -88,4 +96,25 @@ const dataView = ref<InstanceType<typeof DataView>>()
     @apply bg-transparent border-none text-base p-0 mx-2;
   }
 }
+
+/* .list-move, */
+/* apply transition to moving elements */
+.t-leave-active,
+.t-enter-active {
+  transition: all 0.5s ease-in-out;
+}
+
+.t-enter-from,
+.t-leave-to {
+  opacity: 0;
+  /* transform: translateX(30px); */
+}
+
+/* ensure leaving items are taken out of layout flow so that moving
+   animations can be calculated correctly. */
+/* .list-enter-active, */
+/* .t-enter-active,
+.t-leave-active {
+  position: absolute;
+} */
 </style>

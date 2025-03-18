@@ -11,7 +11,7 @@ const root = ref<HTMLDivElement | undefined>()
     >
       <img
         v-bind="$attrs"
-        class="w-full h-full object-cover origin-center transition-all duration-1000"
+        class="w-full h-full object-cover origin-center transition-all duration-1000 delay-1000"
         style="scale: 1.33"
       />
     </Parallaxy>
