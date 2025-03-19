@@ -331,7 +331,7 @@ onMounted(() => {
               <ParallaxImage
                 :src="Project1"
                 alt="Project 1"
-                class="basis-full md:basis-1/2 w-full rounded-lg aspect-square max-h-96"
+                class="basis-full md:basis-1/2 w-full rounded-lg aspect-square max-h-80"
               />
               <div class="basis-full md:basis-1/2 p-4 md:p-0 flex flex-col gap-y-8">
                 <Image
@@ -358,7 +358,7 @@ onMounted(() => {
               <ParallaxImage
                 :src="Project2"
                 alt="Project 2"
-                class="basis-full md:basis-1/2 w-full rounded-lg aspect-square max-h-96"
+                class="basis-full md:basis-1/2 w-full rounded-lg aspect-square max-h-80"
               />
               <div class="basis-full md:basis-1/2 p-4 md:p-0 flex flex-col gap-y-8">
                 <Image
