@@ -28,7 +28,7 @@ onMounted(() => {
     <!-- {{ windowHeight }} {{ footerHeight }} -->
     <Navbar ref="navbar" id="navbar" />
     <slot name="page" :windowHeight :footerHeight :navbarHeight>
-      <NuxtPage :style="{ minHeight: `${windowHeight - footerHeight}px` }" />
+      <NuxtPage :style="{ minHeight: `${windowHeight - footerHeight}px` }" :navbar="navbar" />
     </slot>
     <Footer ref="footer" />
   </NuxtLayout>

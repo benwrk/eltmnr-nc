@@ -31,7 +31,9 @@ const props = defineProps({
 const { y: scrollY } = useScroll(window)
 const menu = ref<InstanceType<typeof Menu>>()
 const root = ref<HTMLDivElement | undefined>()
-const atTop = computed(() => scrollY.value <= 10)
+const atTopAt = ref(10)
+const forceTop = ref(false)
+const atTop = computed(() => scrollY.value <= atTopAt.value || forceTop.value)
 const page = data.value
 const project = projectData.value?.at(0)?.children as ContentNavigationItem[] | undefined
 
@@ -93,7 +95,9 @@ const toggle = (event: MouseEvent) => {
 const rootSize = useElementSize(root)
 
 defineExpose({
-  height: rootSize.height
+  height: rootSize.height,
+  atTopAt,
+  forceTop
 })
 
 watch(rootSize.height, () => {

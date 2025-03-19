@@ -8,6 +8,10 @@ const props = withDefaults(
     loop?: boolean
     autoplay?: boolean
     clickable?: boolean
+    // scale: {
+    //   x: number
+    //   y: number
+    // }
   }>(),
   {
     loop: true,
@@ -46,7 +50,7 @@ onMounted(() => {
     <div
       :style="{
         width: `${Math.max(width, (height / 9) * 16)}px`,
-        height: `${4 * height}px`
+        height: `${4 * height}px`,
       }"
     >
       <ScriptYouTubePlayer

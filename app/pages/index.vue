@@ -9,14 +9,22 @@ import Project2 from '/home/project-2.jpg'
 import ProjectLogo1 from '/logos/project-1-light.svg'
 import ProjectLogo2 from '/logos/project-2-light.svg'
 import LavishEstatesLe from '/logos/lavish-estates-le-black.svg'
+import type { Navbar } from '#components'
 
 const route = useRoute()
+const props = defineProps<{
+  navbar: InstanceType<typeof Navbar>
+}>()
 
 const { data } = await useAsyncData(route.path, () => {
   return queryCollection('homePage').path(route.path).first()
 })
 
 const videoId = data.value?.youtubeVideoId
+
+const headerBottom = computed(
+  () => (header.value?.offsetTop ?? 0) + (header.value?.offsetHeight ?? 0)
+)
 
 const windowScroll = useWindowScroll()
 const translateHeroOriginDiv = ref<HTMLDivElement>()
@@ -25,6 +33,7 @@ const translateHeroTargetDiv = ref<HTMLDivElement>()
 const translateHeroTargetSize = useElementSize(translateHeroTargetDiv)
 
 let navbarHeight: Ref<Number> | undefined
+const header = ref<HTMLDivElement>()
 
 const translateHeroValues = computed(() => ({
   size: {
@@ -37,6 +46,16 @@ const translateHeroValues = computed(() => ({
       translateHeroStage.value *
         (translateHeroOriginSize.height.value - translateHeroTargetSize.height.value)
   },
+  // scale: {
+  //   x:
+  //     1 -
+  //     (1-translateHeroTargetSize.width.value / translateHeroOriginSize.width.value) *
+  //       translateHeroStage.value,
+  //   y:
+  //     1 -
+  //     (1-translateHeroTargetSize.height.value / translateHeroOriginSize.height.value) *
+  //       translateHeroStage.value
+  // },
   translate: {
     x:
       translateHeroStage.value *
@@ -101,7 +120,7 @@ watch(windowScroll.isScrolling, function stickyScroll() {
 })
 
 onMounted(() => {
-  navbarHeight = useElementSize(document.getElementById('navbar')).height
+  navbarHeight = useElementSize(props.navbar).height
 })
 
 const responsiveOptions = [
@@ -126,6 +145,50 @@ const responsiveOptions = [
     numScroll: 1
   }
 ]
+
+const videoClass = ref({
+  'rounded-l-lg': translateHeroStage.value >= 0.99
+})
+const videoStyle = ref({
+  transform: `translate3d(${translateHeroValues.value?.translate.x}px, ${translateHeroValues.value?.translate.y}px, 0)`,
+  width: `${translateHeroValues.value?.size.w}px`,
+  height: `${translateHeroValues.value?.size.h}px`
+})
+
+function updateVideoSize() {
+  videoClass.value = {
+    'rounded-l-lg': translateHeroStage.value >= 0.99
+  }
+  videoStyle.value = {
+    transform: `translate3d(${translateHeroValues.value?.translate.x}px, ${translateHeroValues.value?.translate.y}px, 0)`,
+    width: `${translateHeroValues.value?.size.w}px`,
+    height: `${translateHeroValues.value?.size.h}px`
+  }
+}
+
+debouncedWatch(
+  windowScroll.y,
+  () => {
+    updateVideoSize()
+  },
+  { debounce: 10 }
+)
+
+debouncedWatch(
+  windowScroll.y,
+  (value) => {
+    props.navbar.forceTop = value < headerBottom.value
+    console.log('navbar', props.navbar)
+    console.log('headerBottom', headerBottom.value)
+    console.log('windowScroll.y', windowScroll.y.value)
+    console.log('navbarForceTop', props.navbar.forceTop)
+  },
+  { debounce: 10 }
+)
+
+onMounted(() => {
+  updateVideoSize()
+})
 </script>
 
 <template>
@@ -133,17 +196,16 @@ const responsiveOptions = [
     <div class="flex flex-col w-full">
       <div ref="translateHeroOriginDiv" class="relative w-full h-screen bg-surface-950 dark-theme">
         <HeroVideoPlayer
-          class="shadow-2xl"
-          :class="{ 'rounded-l-lg': translateHeroStage >= 0.99 }"
-          :style="{
-            transform: `translate3d(${translateHeroValues.translate.x}px, ${translateHeroValues.translate.y}px, 0)`,
-            width: `${translateHeroValues.size.w}px`,
-            height: `${translateHeroValues.size.h}px`
-          }"
+          class="shadow-2xl transition-all duration-700 delay-200 ease-in-out origin-top-left"
+          :class="videoClass"
+          :style="videoStyle"
           :videoId="videoId!"
         />
       </div>
-      <div class="flex flex-col w-full pb-16 bg-surface-950 dark-theme text-surface-300">
+      <div
+        ref="header"
+        class="flex flex-col w-full pb-16 bg-surface-950 dark-theme text-surface-300"
+      >
         <section
           :style="{
             paddingTop: `${navbarHeight}px`
