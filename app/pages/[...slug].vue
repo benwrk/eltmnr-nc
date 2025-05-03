@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { Navbar } from '#components'
 const route = useRoute()
 
 const { data: page } = await useAsyncData('page-' + route.path, () => {
@@ -13,6 +14,11 @@ useSeoMeta({
 if (!page.value) {
   throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
 }
+
+// Even though this is not used, it is required for the navbar to work correctly
+const props = defineProps<{
+  navbar: InstanceType<typeof Navbar> | undefined
+}>()
 </script>
 
 <template>

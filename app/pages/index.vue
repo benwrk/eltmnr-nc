@@ -13,7 +13,7 @@ import type { Navbar } from '#components'
 
 const route = useRoute()
 const props = defineProps<{
-  navbar: InstanceType<typeof Navbar>
+  navbar: InstanceType<typeof Navbar> | undefined
 }>()
 
 const { data } = await useAsyncData(route.path, () => {
@@ -177,11 +177,13 @@ debouncedWatch(
 debouncedWatch(
   windowScroll.y,
   (value) => {
-    props.navbar.forceTop = value < headerBottom.value
-    console.log('navbar', props.navbar)
-    console.log('headerBottom', headerBottom.value)
-    console.log('windowScroll.y', windowScroll.y.value)
-    console.log('navbarForceTop', props.navbar.forceTop)
+    if (props.navbar) {
+      props.navbar.forceTop = value < headerBottom.value
+    }
+    // console.log('navbar', props.navbar)
+    // console.log('headerBottom', headerBottom.value)
+    // console.log('windowScroll.y', windowScroll.y.value)
+    // console.log('navbarForceTop', props.navbar.forceTop)
   },
   { debounce: 10 }
 )

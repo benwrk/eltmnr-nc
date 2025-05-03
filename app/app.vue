@@ -3,10 +3,10 @@ import { animate, inView } from 'motion'
 import type Footer from './components/Footer.vue'
 import type Navbar from './components/Navbar.vue'
 
-const footer = ref<InstanceType<typeof Footer>>()
-const navbar = ref<InstanceType<typeof Navbar>>()
+const footer = ref<InstanceType<typeof Footer> | undefined>()
+const navbar = ref<InstanceType<typeof Navbar> | undefined>()
 const { height: footerHeight } = useElementSize(footer)
-const { height: navbarHeight } = useElementSize(navbar)
+// const { height: navbarHeight } = useElementSize(navbar)
 const { height: windowHeight } = useWindowSize()
 
 onMounted(() => {
@@ -21,14 +21,14 @@ onMounted(() => {
 </script>
 
 <template>
-  <!-- {{ footerHeight }} -->
   <NuxtLayout>
-    <!-- {{ navbarHeight }}
-    {{ footerHeight }} -->
-    <!-- {{ windowHeight }} {{ footerHeight }} -->
     <Navbar ref="navbar" id="navbar" />
-    <slot name="page" :windowHeight :footerHeight :navbarHeight>
-      <NuxtPage :style="{ minHeight: `${windowHeight - footerHeight}px` }" :navbar="navbar" />
+    <slot name="page">
+      <NuxtPage
+        :style="{ minHeight: `${windowHeight - footerHeight}px` }"
+        :navbar="navbar"
+        data-allow-mismatch
+      />
     </slot>
     <Footer ref="footer" />
   </NuxtLayout>

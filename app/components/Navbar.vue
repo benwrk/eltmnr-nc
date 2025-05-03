@@ -94,10 +94,14 @@ const toggle = (event: MouseEvent) => {
 
 const rootSize = useElementSize(root)
 
+const computedHeight = computed(() => {
+  return rootSize?.height?.value ?? 0
+})
+
 defineExpose({
-  height: rootSize.height,
-  atTopAt,
-  forceTop
+  // height: computedHeight,
+  // atTopAt,
+  forceTop: forceTop
 })
 
 watch(rootSize.height, () => {

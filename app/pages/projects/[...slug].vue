@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const route = useRoute()
+import type { Navbar } from '#components'
 
 const { data: page } = await useAsyncData('project-' + route.path, () => {
   return queryCollection('project').path(route.path).first()
@@ -13,6 +14,10 @@ useSeoMeta({
 if (!page.value) {
   throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
 }
+
+const props = defineProps<{
+  navbar: InstanceType<typeof Navbar> | undefined
+}>()
 </script>
 
 <template>

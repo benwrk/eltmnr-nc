@@ -30,31 +30,36 @@ const props = defineProps<{
   <div class="flex flex-col">
     <h3>{{ name }}</h3>
     <!-- <h4>Features</h4> -->
-    <Galleria
-      :value="floorPlans.map((f) => ({ itemImageSrc: f.imageSrc, alt: f.label }))"
-      :numVisible="5"
-      class="w-full"
-      :showThumbnails="false"
-      :showIndicators="true"
-      :changeItemOnIndicatorHover="true"
-      indicatorsPosition="bottom"
-    >
-      <template #item="slotProps">
-        <img
-          class="!rounded-none max-h-[36rem] object-contain p-4"
-          :src="slotProps.item.itemImageSrc"
-          :alt="slotProps.item.alt"
-          style="width: 100%; display: block"
-        />
-      </template>
-      <template #indicator="{ activeIndex, index }">
-        <span
-          class="cursor-pointer"
-          :class="{ 'text-muted-color': index !== activeIndex, 'font-bold': index === activeIndex }"
-          >{{ floorPlans[index]?.label }}</span
-        >
-      </template>
-    </Galleria>
+    <ClientOnly>
+      <Galleria
+        :value="floorPlans.map((f) => ({ itemImageSrc: f.imageSrc, alt: f.label }))"
+        :numVisible="5"
+        class="w-full"
+        :showThumbnails="false"
+        :showIndicators="true"
+        :changeItemOnIndicatorHover="true"
+        indicatorsPosition="bottom"
+      >
+        <template #item="slotProps">
+          <img
+            class="!rounded-none max-h-[36rem] object-contain p-4"
+            :src="slotProps.item.itemImageSrc"
+            :alt="slotProps.item.alt"
+            style="width: 100%; display: block"
+          />
+        </template>
+        <template #indicator="{ activeIndex, index }">
+          <span
+            class="cursor-pointer"
+            :class="{
+              'text-muted-color': index !== activeIndex,
+              'font-bold': index === activeIndex
+            }"
+            >{{ floorPlans[index]?.label }}</span
+          >
+        </template>
+      </Galleria>
+    </ClientOnly>
     <div class="rounded-lg flex flex-wrap bg-highlight justify-evenly">
       <!-- <ScrollPanel
         class="h-24"
