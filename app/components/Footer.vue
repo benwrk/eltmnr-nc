@@ -39,8 +39,10 @@ const { data: projectData } = await useAsyncData('footer-project', () => {
           </a>
           <div class="flex flex-col mt-6">
             <h5>Elite Manor Co., Ltd.</h5>
-            5/203 Moo 4, Cherngtalay,<br />
-            Thalang, Phuket 83110
+            <!-- 5/203 Moo 4, Cherngtalay,<br />
+            Thalang, Phuket 83110 -->
+            68/124 Moo 1, Chalong Sub-district<br />
+            Muang District, Phuket 83130
           </div>
         </div>
         <div class="flex flex-col fade-in basis-full md:basis-auto">

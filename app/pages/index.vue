@@ -238,12 +238,12 @@ onMounted(() => {
                 <span
                   class="font-display text-5xl text-muted-color-emphasis font-normal fade-in uppercase"
                 >
-                  The<br />Innovate<br />Living
+                  Innovative<br />Living
                 </span>
               </header>
             </div>
             <div
-              class="basis-full flex justify-center md:justify-center items-baseline flex-wrap p-4 md:p-12 mb-12"
+              class="basis-full flex justify-center md:justify-center items-baseline flex-wrap p-4 md:p-12 mb-12 md:mb-0"
             >
               <span class="font-display text-5xl md:text-6xl uppercase">Classic </span>
               <span class="font-display text-primary text-7xl md:text-9xl md:ml-4 uppercase">
@@ -251,8 +251,8 @@ onMounted(() => {
               >
             </div>
           </div>
-          <div class="flex flex-col items-start container mx-auto px-4">
-            <div class="md:w-1/2 md:ml-auto">
+          <div class="flex flex-col container mx-auto px-4 mb-16">
+            <div class="text-center">
               <h1 class="text-primary text-2xl fade-in">
                 To redefine innovative living through luxury, comfort, and pristine quality
                 residences
@@ -285,29 +285,16 @@ onMounted(() => {
       <main>
         <section class="flex flex-col w-full fade-in">
           <div
-            class="flex items-center container mx-auto px-4 gap-x-32 gap-y-16 flex-wrap md:flex-nowrap"
+            class="flex items-center container mx-auto px-4 gap-x-32 gap-y-16 flex-wrap md:flex-nowrap text-center md:text-start"
           >
-            <div class="basis-full md:basis-auto flex gap-x-8 md:gap-x-16 shrink-0 md:-mt-48">
-              <Image
-                :src="Award1"
-                alt="Award 1"
-                class="h-48 md:h-96 bg-primary-300 p-1 rounded-lg shadow-2xl"
-                preview
-              />
-              <Image
-                :src="Award2"
-                alt="Award 2"
-                class="h-48 md:h-96 bg-primary-300 p-1 rounded-lg shadow-2xl"
-                preview
-              />
-              <Image
-                :src="Award3"
-                alt="Award 3"
-                class="h-48 md:h-96 bg-primary-300 p-1 rounded-lg shadow-2xl"
-                preview
-              />
+            <div
+              class="basis-full justify-center md:justify-start md:basis-auto flex gap-x-8 md:gap-x-16 shrink-0 -mt-32 md:-mt-48"
+            >
+              <Image :src="Award1" alt="Award 1" class="h-48 md:h-96 shadow-2xl" preview />
+              <Image :src="Award2" alt="Award 2" class="h-48 md:h-96 shadow-2xl" preview />
+              <Image :src="Award3" alt="Award 3" class="h-48 md:h-96 shadow-2xl" preview />
             </div>
-            <div class="basis-full md:basis-auto flex flex-col gap-y-8 items-start">
+            <div class="basis-full items-center md:items-start md:basis-auto flex flex-col gap-y-8">
               <p>
                 We tailor to international clients who seek luxury and high-end housing in Thailand.
                 Headquartered in Phuket, Thailand and focused on a target market of families,
