@@ -1,5 +1,5 @@
 ---
-youtubeVideoId: q0hvnzhgLis
+youtubeVideoId: vxJzUlFacMI
 faqs:
   - question: What types of properties does Elite Manor Developer offer?
     answer: Elite Manor Developer specializes in luxury residential properties,
