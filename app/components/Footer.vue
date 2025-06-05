@@ -39,8 +39,6 @@ const { data: projectData } = await useAsyncData('footer-project', () => {
           </a>
           <div class="flex flex-col mt-6">
             <h5>Elite Manor Co., Ltd.</h5>
-            <!-- 5/203 Moo 4, Cherngtalay,<br />
-            Thalang, Phuket 83110 -->
             68/124 Moo 1, Chalong Sub-district<br />
             Muang District, Phuket 83130
           </div>
@@ -59,7 +57,7 @@ const { data: projectData } = await useAsyncData('footer-project', () => {
           <h5>Projects</h5>
           <ul class="mt-2 flex flex-col gap-x-2">
             <li
-              v-for="item in projectData?.at(0)?.children?.filter((i) => !i.navHidden)"
+              v-for="item in projectData?.at(0)?.children?.filter((i: any) => !i.navHidden)"
               :key="item.id"
             >
               <NuxtLink :to="item.path" class="text-primary-emphasis-alt">
