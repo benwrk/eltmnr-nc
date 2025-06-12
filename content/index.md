@@ -42,4 +42,8 @@ faqs:
     answer: You can subscribe to our newsletter via our website to receive regular
       updates on our upcoming projects, new releases, and exclusive offers. You
       can also follow us on social media for the latest news and announcements.
+seo:
+  title: Elite Manor Phuket's Innovative Living Classic Luxury Villas
+  description: Elite Manor is a real estate development firm that tailors to a
+    global array of clients who seek the highest luxury in upscale homes.
 ---
